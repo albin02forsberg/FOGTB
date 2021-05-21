@@ -4,7 +4,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "build",
+    "public": "fogtb-client/build",
     "ignore": [
       "firebase.json",
       "**/.*",

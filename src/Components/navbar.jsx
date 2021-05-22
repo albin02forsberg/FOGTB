@@ -1,12 +1,12 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
     <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          FOGTB
-        </a>
+        <Link className="navbar-brand" to="/">FOGTB</Link>
         <button
           class="navbar-toggler"
           type="button"
@@ -21,28 +21,32 @@ function Navbar() {
         <div class="collapse navbar-collapse show" id="navbarTogglerDemo2">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" to="/">
                 Flöde
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/drillcreator">
+              <Link className="nav-link" to="/drillcreator">
                 Övningskaparen
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/sessionplanner">
-                Träninsplaneraren
-              </a>
+              <Link className="nav-link" to="/sessionplanner">
+                Träningsplaneraren
+              </Link>
             </li>
           </ul>
           <ul className="navbar-nav my-2 my-lg-0">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                  <a href="/login" className="nav-link">Logga in</a>
+                <Link className="nav-link" to="/login">
+                  Logga in
+                </Link>
               </li>
               <li className="nav-item">
-                  <a href="/signup" className="nav-link">Skapa konto</a>
+                <Link className="nav-link" to="/signup">
+                  Skapa konto
+                </Link>
               </li>
             </ul>
           </ul>

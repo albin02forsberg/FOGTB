@@ -41,7 +41,9 @@ function Login() {
               />
             </div>
             <div className="form-group">
-              <button type="button" className="btn btn-primary">
+              <button type="button" className="btn btn-primary" onClick={() =>{
+                console.log(email, password);
+              }}>
                 Logga in
               </button>
             </div>

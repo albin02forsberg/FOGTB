@@ -1,5 +1,4 @@
 import React from "react";
-import { auth } from "../firebase/firebase";
 
 import Card from "./card";
 

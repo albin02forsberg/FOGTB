@@ -5,21 +5,24 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./static/App.css";
 
 // Import components
-import Home from "./Components/home";
+import Dashboard from "./Components/dashboard";
 import Navbar from "./Components/navbar";
 import Login from "./Components/login";
+import SignUp from "./Components/signup";
 
 function App() {
   return (
-    // <Home/>
     <Router>
       <Navbar />
       <Switch>
         <Route path="/login">
           <Login />
         </Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
         <Route path="/">
-          <Home />
+          <Dashboard />
         </Route>
       </Switch>
     </Router>

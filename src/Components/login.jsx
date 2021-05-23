@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 
+import { auth } from "../firebase/firebase";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  if (sessionStorage.getItem("user") !== "null") {
+    window.location.replace("/");
+  }
 
   const handleChange = (event) => {
     if (event.target.name === "password") {
@@ -41,12 +48,25 @@ function Login() {
               />
             </div>
             <div className="form-group">
-              <button type="button" className="btn btn-primary" onClick={() =>{
-                console.log(email, password);
-              }}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  auth
+                    .signInWithEmailAndPassword(email, password)
+                    .then((s) => {
+                      sessionStorage.setItem("user", s)
+                      window.location.replace("/");
+                    })
+                    .catch((err) => {
+                      setError(err.message);
+                    });
+                }}
+              >
                 Logga in
               </button>
             </div>
+            {error}
           </form>
         </div>
       </div>

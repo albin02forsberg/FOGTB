@@ -11,6 +11,9 @@ import Login from "./Components/login";
 import SignUp from "./Components/signup";
 
 function App() {
+  if (!sessionStorage.getItem("user")) {
+    sessionStorage.setItem("user", null);
+  }
   return (
     <Router>
       <Navbar />

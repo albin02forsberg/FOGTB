@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 function Card(props) {
   return (
     <div className="card">
@@ -9,14 +11,9 @@ function Card(props) {
         <div className="card-text">
           <p>{props.text}</p>
         </div>
-        <button
-          className="btn btn-primary"
-          onClick={() => {
-            window.location.replace(props.link);
-          }}
-        >
-          Gå till {props.title}
-        </button>
+        <Link to={props.link}>
+          <button className="btn btn-primary">Gå till {props.title}</button>
+        </Link>
       </div>
     </div>
   );

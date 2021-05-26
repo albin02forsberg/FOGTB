@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth } from "../firebase/firebase";
+import { auth, db } from "../firebase/firebase";
 
 function SignUp() {
   const [username, setUsername] = useState("");
@@ -9,9 +9,9 @@ function SignUp() {
 
   const [err, setErr] = useState("");
 
-    if(auth.currentUser){
-      window.location.replace("/");
-    }
+  if (auth.currentUser) {
+    window.location.replace("/");
+  }
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -85,18 +85,29 @@ function SignUp() {
               type="button"
               className="btn btn-primary"
               onClick={() => {
+                // auth
+                //   .createUserWithEmailAndPassword(email, pass1)
+                //   .then((result) => {
+                //     console.log(result);
+                //     result.user.updateProfile({
+                //       displayName: username,
+                //     }))
                 auth
                   .createUserWithEmailAndPassword(email, pass1)
                   .then((result) => {
-                    console.log(result);
                     result.user.updateProfile({
                       displayName: username,
+                    }).then(()=> {
+                      db.collection("users").doc(result.user.uid).set({
+                        username: result.user.displayName,
+                        uid: result.user.uid,
+                        drills: [],
+                        sessions: [],
+                        teams: []
+                      });
                     });
                   })
-                  .catch((err) => {
-                      console.log(err);
-                    setErr(err.message);
-                  });
+                  .catch((err) => setErr(err.message));
               }}
             >
               Skapa konto

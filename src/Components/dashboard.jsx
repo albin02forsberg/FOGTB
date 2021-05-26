@@ -1,16 +1,21 @@
-import React from "react";
+import React  from "react";
 
 import Card from "./card";
 
+import { auth } from "../firebase/firebase";
+
 function Dashboard() {
-  if (sessionStorage.getItem("user") === "null") {
-    window.location.replace("/login");
-  }
+
+  auth.onAuthStateChanged(function (user) {
+    if (!user) {
+      window.location.replace("/login");
+    }
+  });
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-12">
-          <h1 className="h1">Välkommen till dashboarden</h1>
+          <h1 className="h1">Välkommen</h1>
         </div>
       </div>
       <div className="row">

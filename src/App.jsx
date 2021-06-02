@@ -1,10 +1,6 @@
 // Import react
-import React  from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./static/App.css";
 
 // Import components
@@ -14,6 +10,8 @@ import Login from "./Components/login";
 import SignUp from "./Components/signup";
 import Drills from "./Components/drills";
 import User from "./Components/user";
+import DrillCreator from "./Components/drillcreator";
+import Drill from "./Components/drill"
 
 function App() {
   return (
@@ -27,10 +25,16 @@ function App() {
           <SignUp />
         </Route>
         <Route path="/drills">
-          <Drills/>
+          <Drills />
+        </Route>
+        <Route path="/drillcreator">
+          <DrillCreator />
+        </Route>
+        <Route path="/drill/:id">
+          <Drill />
         </Route>
         <Route path="/user/:id">
-          <User/>
+          <User />
         </Route>
         <Route path="/">
           <Dashboard />

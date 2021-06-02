@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 
-import { auth } from "../firebase/firebase";
+import { auth  } from "../firebase/firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  if (sessionStorage.getItem("user") !== "null") {
-    window.location.replace("/");
-  }
 
   const handleChange = (event) => {
     if (event.target.name === "password") {
@@ -25,7 +21,7 @@ function Login() {
     <div className="container">
       <div className="row">
         <div className="col-md-12">
-          <div className="display-2">Logga in</div>
+          <div className="h1">Logga in</div>
           <form>
             <div className="form-group">
               <label htmlFor="email">Email</label>
@@ -54,8 +50,7 @@ function Login() {
                 onClick={() => {
                   auth
                     .signInWithEmailAndPassword(email, password)
-                    .then((s) => {
-                      sessionStorage.setItem("user", s)
+                    .then(() => {
                       window.location.replace("/");
                     })
                     .catch((err) => {

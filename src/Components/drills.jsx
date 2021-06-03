@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {  db } from "../firebase/firebase";
-
+import { db } from "../firebase/firebase";
+import { Link } from "react-router-dom";
 // Components
 import Card from "./card";
 
@@ -26,6 +26,10 @@ function Drills() {
       <div className="row">
         <div className="col-md-12">
           <h1 className="h1">Övningar</h1>
+          <Link to="/drillcreator">
+            <button className="btn btn-primary">Skapa övningar</button>
+          </Link>
+          <hr/>
           <div className="card-columns">
             {drills.map((doc) => {
               return (

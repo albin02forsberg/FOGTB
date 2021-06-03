@@ -35,13 +35,13 @@ function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/drillcreator">
-                Övningskaparen
+              <Link className="nav-link" to="/drills">
+                Övningar
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/sessionplanner">
-                Träningsplaneraren
+              <Link className="nav-link" to="/sessions">
+                Träningspass
               </Link>
             </li>
           </ul>

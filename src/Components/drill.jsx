@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { auth, db } from "../firebase/firebase";
 
 function Drill() {
@@ -20,37 +21,42 @@ function Drill() {
   }, [id]);
 
   auth.onAuthStateChanged((user) => {
-    if(user){
-    if (auth.currentUser.uid === drill.creator_uid) {
-      setDisplay(true);
-    }
-
+    if (user) {
+      if (auth.currentUser.uid === drill.creator_uid) {
+        setDisplay(true);
+      }
     }
   });
 
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-lg-6">
           <h1 className="h1">{drill.name}</h1>
           {display && (
             <div className="btn-group">
-            <button
-              className="btn btn-danger"
-              onClick={() => {
-                db.collection("drills")
-                  .doc(drill.id)
-                  .delete()
-                  .then(() => window.location.replace("/"));
-              }}
-            >
-              Radera
-            </button>
-            <button className="btn btn-primary">Redigera</button>
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  db.collection("drills")
+                    .doc(drill.id)
+                    .delete()
+                    .then(() => window.location.replace("/"));
+                }}
+              >
+                Radera
+              </button>
+              <button className="btn btn-primary">Redigera</button>
             </div>
           )}
           <hr />
-          <table className="table table-striped">
+          <p>
+            Skapad av:{" "}
+            <Link to={"/user/" + drill.creator_uid}>
+              {drill.creator_username}
+            </Link>{" "}
+          </p>
+          <table className="table table-striped table-responsive">
             <thead>
               <tr>
                 <th>Moment</th>
@@ -75,8 +81,13 @@ function Drill() {
           <h2 className="h2">Anvisningar</h2>
           <p>{drill.rules}</p>
         </div>
-        <div className="col-md-6">
-          <img src={drill.img_url} alt={drill.name} className="img-thumbnail" />
+        <div className="col-lg-6">
+          <img
+            src={drill.img_url}
+            alt={drill.name}
+            className="img-thumbnail img-responsive"
+            style={{ width: "75%" }}
+          />
         </div>
       </div>
     </div>

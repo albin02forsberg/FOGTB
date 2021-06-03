@@ -13,6 +13,12 @@ function SignUp() {
     window.location.replace("/");
   }
 
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      window.location.replace("/");
+    }
+  });
+
   const handleChange = (event) => {
     event.preventDefault();
     let e = event.target;
@@ -95,17 +101,22 @@ function SignUp() {
                 auth
                   .createUserWithEmailAndPassword(email, pass1)
                   .then((result) => {
-                    result.user.updateProfile({
-                      displayName: username,
-                    }).then(()=> {
-                      db.collection("users").doc(result.user.uid).set({
-                        username: result.user.displayName,
-                        uid: result.user.uid,
-                        drills: [],
-                        sessions: [],
-                        teams: []
+                    result.user
+                      .updateProfile({
+                        displayName: username,
+                      })
+                      .then(() => {
+                        db.collection("users")
+                          .doc(result.user.uid)
+                          .set({
+                            username: result.user.displayName,
+                            uid: result.user.uid,
+                            drills: [],
+                            sessions: [],
+                            teams: [],
+                          })
+                          .then(window.location.replace("/"));
                       });
-                    });
                   })
                   .catch((err) => setErr(err.message));
               }}

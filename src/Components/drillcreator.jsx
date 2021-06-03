@@ -26,8 +26,6 @@ function DrillCreator() {
     setDrill({ ...drill, [event.target.name]: event.target.value });
 
     // drill[event.target.name] = event.target.value;
-
-    console.log(drill);
   }
 
   function handleImg(event) {
@@ -52,10 +50,13 @@ function DrillCreator() {
         db.collection("drills")
           .add(drill)
           .then((res) => {
-            drill.id = res.id
-            db.collection("drills").doc(res.id).set(drill).then(()=>{
-              window.location.replace("drill/" + drill.id);
-            });
+            drill.id = res.id;
+            db.collection("drills")
+              .doc(res.id)
+              .set(drill)
+              .then(() => {
+                window.location.replace("drill/" + drill.id);
+              });
           });
       });
   }

@@ -11,7 +11,10 @@ import SignUp from "./Components/signup";
 import Drills from "./Components/drills";
 import User from "./Components/user";
 import DrillCreator from "./Components/drillcreator";
-import Drill from "./Components/drill"
+import Drill from "./Components/drill";
+import Sessions from "./Components/sessions";
+import Createsession from "./Components/createsession";
+import Session from "./Components/session";
 
 function App() {
   return (
@@ -27,11 +30,20 @@ function App() {
         <Route path="/drills">
           <Drills />
         </Route>
+        <Route path="/sessions">
+          <Sessions />
+        </Route>
+        <Route path="/createsession">
+          <Createsession />
+        </Route>
         <Route path="/drillcreator">
           <DrillCreator />
         </Route>
         <Route path="/drill/:id">
           <Drill />
+        </Route>
+        <Route path="/session/:id">
+          <Session />
         </Route>
         <Route path="/user/:id">
           <User />

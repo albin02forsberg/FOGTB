@@ -9,8 +9,8 @@ function User() {
   const [drills, setDrills] = useState([]);
 
   useEffect(() => {
-    db.collection("users")
-      .get(id)
+    db.collection("users").where("uid", "==", id)
+      .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
           setUser(doc.data());

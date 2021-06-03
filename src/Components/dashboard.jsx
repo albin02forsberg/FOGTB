@@ -10,10 +10,11 @@ function Dashboard() {
   const [id, setId] = useState("");
   // const[teams, setTeams]=useState([]);
 
-  auth.onAuthStateChanged(function (user) {
+  auth.onAuthStateChanged((user) => {
     if (!user) {
       window.location.replace("/login");
     } else {
+      setUser(user);
       setId(user.uid);
     }
   });
@@ -25,7 +26,8 @@ function Dashboard() {
         snapshot.docs.forEach((doc) => {
           setUser(doc.data());
         });
-      }).then(()=>{
+      })
+      .then(() => {
         // setTeams(user.teams);
       })
       .catch((err) => {
@@ -38,7 +40,7 @@ function Dashboard() {
     <div className="container">
       <div className="row">
         <div className="col-md-12">
-          <h1 className="h1">Välkommen, {user.username}</h1>
+          <h1 className="h1">Välkommen, {user.displayName}</h1>
         </div>
       </div>
       <div className="row">

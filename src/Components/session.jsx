@@ -5,7 +5,6 @@ import { db } from "../firebase/firebase";
 function Session() {
   const { id } = useParams();
   const [session, setSession] = useState({});
-  const [d, setD] = useState([]);
 
   useEffect(() => {
     db.collection("sessions")

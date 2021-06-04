@@ -25,22 +25,19 @@ function Sessions() {
             <button className="btn btn-primary">Skapa träningspass</button>
           </Link>
           <hr />
-        </div>
-        <div className="row">
-          <div className="col-md-12">
-            <div className="card-columns">
-              {sessions.map((session) => {
-                return (
-                  <Card
-                    title={session.name}
-                    subtitle={session.level}
-                    btntext="träningspass"
-                    id={session.id}
-                    link={"session/" + session.id}
-                  />
-                );
-              })}
-            </div>
+          <div className="card-columns">
+            {sessions.map((session) => {
+              return (
+                <Card
+                  title={session.name}
+                  subtitle={session.moment}
+                  btntext="träningspass"
+                  id={session.id}
+                  level={session.level}
+                  link={"session/" + session.id}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

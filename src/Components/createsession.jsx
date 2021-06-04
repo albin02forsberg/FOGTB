@@ -153,7 +153,9 @@ function Createsession() {
                     .then((ref) => {
                       db.collection("sessions")
                         .doc(ref.id)
-                        .update({ id: ref.id });
+                        .update({ id: ref.id }).then(()=>{
+                          window.location.replace("/session/" + ref.id)
+                        });
                     });
                 }
               }}

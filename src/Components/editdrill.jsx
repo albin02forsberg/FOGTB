@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { auth, db, storage } from "../firebase/firebase";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
+import { auth, db } from "../firebase/firebase";
 
-function DrillCreator() {
+function Editdrill() {
+  const { id } = useParams();
   const [drill, setDrill] = useState({
     name: "",
     type: "Färdighetsövning",
@@ -12,8 +14,6 @@ function DrillCreator() {
     rules: "",
     explenation: "",
   });
-
-  const [img, setImg] = useState(null);
 
   auth.onAuthStateChanged((user) => {
     drill.creator_uid = user.uid;
@@ -28,43 +28,28 @@ function DrillCreator() {
     // drill[event.target.name] = event.target.value;
   }
 
-  function handleImg(event) {
-    setImg(event.target.files[0]);
-  }
-
   function handelSumbit() {
-    let date = new Date();
-    drill.date =
-      date.getDate() + "/" + date.getUTCMonth() + " - " + date.getFullYear();
-    // Validation
-    storage
-      .ref("drills/" + drill.name + auth.currentUser.uid)
-      .put(img)
-      .then((snapshot) => {
-        console.log(snapshot);
-        drill.img_url =
-          "https://firebasestorage.googleapis.com/v0/b/fogtb-d2850.appspot.com/o/drills%2F" +
-          drill.name +
-          auth.currentUser.uid +
-          "?alt=media&token=2875bb29-9b0b-4ec2-b835-68a94684d57e";
-        db.collection("drills")
-          .add(drill)
-          .then((res) => {
-            drill.id = res.id;
-            db.collection("drills")
-              .doc(res.id)
-              .set(drill)
-              .then(() => {
-                window.location.replace("drill/" + drill.id);
-              });
-          });
+    db.collection("drills")
+      .doc(id)
+      .update(drill)
+      .then(() => {
+        window.location.replace("/drill/" + id);
       });
   }
+
+  useEffect(() => {
+    db.collection("drills")
+      .doc(id)
+      .get()
+      .then((snapshot) => {
+        setDrill(snapshot.data());
+      });
+  }, [id]);
 
   return (
     <div className="container">
       <div className="col-md-12">
-        <h1 className="h1">Övningsskaparen</h1>
+        <h1 className="h1">Redigera övning</h1>
         <form>
           <div className="form-group">
             <label htmlFor="name">Namn</label>
@@ -216,24 +201,12 @@ function DrillCreator() {
               value={drill.rules}
             ></textarea>
           </div>
-          <div className="form-group">
-            <h3>
-              <label htmlFor="img">Bild</label>
-            </h3>
-            <input
-              type="file"
-              name="img"
-              id="img"
-              className="form-control"
-              onChange={handleImg}
-            />
-          </div>
           <button
             type="button"
             className="btn btn-success form-control"
             onClick={handelSumbit}
           >
-            Spara
+            Uppdatera
           </button>
         </form>
       </div>
@@ -241,4 +214,4 @@ function DrillCreator() {
   );
 }
 
-export default DrillCreator;
+export default Editdrill;

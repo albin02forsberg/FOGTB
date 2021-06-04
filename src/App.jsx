@@ -15,6 +15,7 @@ import Drill from "./Components/drill";
 import Sessions from "./Components/sessions";
 import Createsession from "./Components/createsession";
 import Session from "./Components/session";
+import Editdrill from "./Components/editdrill";
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route path="/drillcreator">
           <DrillCreator />
+        </Route>
+        <Route path="/editdrill/:id">
+          <Editdrill/>
         </Route>
         <Route path="/drill/:id">
           <Drill />

@@ -35,18 +35,22 @@ function Drill() {
           <h1 className="h1">{drill.name}</h1>
           {display && (
             <div className="btn-group">
-              <button
-                className="btn btn-danger"
-                onClick={() => {
-                  db.collection("drills")
-                    .doc(drill.id)
-                    .delete()
-                    .then(() => window.location.replace("/"));
-                }}
-              >
-                Radera
-              </button>
-              <button className="btn btn-primary">Redigera</button>
+              <Link>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    db.collection("drills")
+                      .doc(drill.id)
+                      .delete()
+                      .then(() => window.location.replace("/"));
+                  }}
+                >
+                  Radera
+                </button>
+              </Link>
+              <Link to={"/editdrill/" + drill.id}>
+                <button className="btn btn-primary">Redigera</button>
+              </Link>
             </div>
           )}
           <hr />

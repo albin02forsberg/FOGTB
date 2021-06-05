@@ -1,7 +1,7 @@
 // Import react
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./static/App.css";
+import "./static/App.min.css";
 
 // Import components
 import Dashboard from "./Components/dashboard";

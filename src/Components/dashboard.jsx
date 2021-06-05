@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import Card from "./card";
 
 import { auth, db } from "../firebase/firebase";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   const [user, setUser] = useState({});
   const [id, setId] = useState("");
-  // const[teams, setTeams]=useState([]);
+  const [teams, setTeams] = useState([]);
 
   auth.onAuthStateChanged((user) => {
     if (!user) {
@@ -23,12 +23,8 @@ function Dashboard() {
     db.collection("users")
       .get(id)
       .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          setUser(doc.data());
-        });
-      })
-      .then(() => {
-        // setTeams(user.teams);
+        setUser(snapshot.data());
+        setTeams((arr) => snapshot.data().teams);
       })
       .catch((err) => {
         console.log(err);
@@ -64,25 +60,27 @@ function Dashboard() {
       <div className="row">
         <div className="col-lg-6">
           <h2>Mina lag</h2>
-          {/* <Teams teams={teams} /> */}
+
+          <ul className="list-group">
+            {teams.forEach((team) => {
+              console.log(team);
+              <Teams team={team} />;
+            })}
+          </ul>
         </div>
       </div>
     </div>
   );
 }
 
-// function Teams(props) {
-//   return (
-//     <ul className="list-group">
-//       {props.teams.map((team) => {
-//         return (
-//           <li className="list-group-item">
-//             <Link to={"/team/id"}>{team}</Link>
-//           </li>
-//         );
-//       })}
-//     </ul>
-//   );
-// }
+function Teams(props) {
+  console.log(props.teams);
+
+  return (
+    <li>
+      <Link>{props.team}</Link>
+    </li>
+  );
+}
 
 export default Dashboard;

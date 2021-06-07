@@ -89,8 +89,7 @@ function Drill() {
           <img
             src={drill.img_url}
             alt={drill.name}
-            className="img-thumbnail img-responsive"
-            style={{ width: "75%" }}
+            className="img-thumbnail img-fluid"
           />
         </div>
       </div>

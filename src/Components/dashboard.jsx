@@ -21,10 +21,12 @@ function Dashboard() {
 
   useEffect(() => {
     db.collection("users")
-      .get(id)
+      .where("uid", "==", id)
+      .get()
       .then((snapshot) => {
-        setUser(snapshot.data());
-        setTeams((arr) => snapshot.data().teams);
+        snapshot.docs.forEach((doc) => {
+          setTeams(doc.data().teams);
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -58,28 +60,24 @@ function Dashboard() {
         </div>
       </div>
       <div className="row">
-        <div className="col-lg-6">
-          <h2>Mina lag</h2>
-
+        <div className="col-lg-12">
+          <h2 className="h2">Mina lag</h2>
           <ul className="list-group">
-            {teams.forEach((team) => {
-              console.log(team);
-              <Teams team={team} />;
+            {teams.map((team) => {
+              return (
+                <li className="list-group-item">
+                  <Link to={"/team/" + team.id}>{team.name}</Link>
+                </li>
+              );
             })}
+            <li className="list-group-item">
+              <Link to={"/createteam"}>Skapa lag</Link>
+            </li>
+            {/* <Teams teams={teams} /> */}
           </ul>
         </div>
       </div>
     </div>
-  );
-}
-
-function Teams(props) {
-  console.log(props.teams);
-
-  return (
-    <li>
-      <Link>{props.team}</Link>
-    </li>
   );
 }
 

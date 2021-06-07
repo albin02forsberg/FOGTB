@@ -16,6 +16,10 @@ import Sessions from "./Components/sessions";
 import Createsession from "./Components/createsession";
 import Session from "./Components/session";
 import Editdrill from "./Components/editdrill";
+import CreateTeam from "./Components/createteam";
+import Team from "./Components/team";
+import Newplayer from "./Components/newplayer";
+import Player from "./Components/player";
 
 function App() {
   return (
@@ -39,6 +43,18 @@ function App() {
         </Route>
         <Route path="/drillcreator">
           <DrillCreator />
+        </Route>
+        <Route path="/createteam">
+          <CreateTeam/>
+        </Route>
+        <Route path="/team/:id">
+          <Team/>
+        </Route>
+        <Route path="/addplayer/:id">
+          <Newplayer/>
+        </Route>
+        <Route path="/player/:id">
+          <Player/>
         </Route>
         <Route path="/editdrill/:id">
           <Editdrill/>

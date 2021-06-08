@@ -6,6 +6,8 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const [err, setErr] = useState("");
 
@@ -27,6 +29,12 @@ function SignUp() {
     }
     if (e.name === "username") {
       setUsername(e.value);
+    }
+    if (e.name === "lastName") {
+      setLastName(e.value);
+    }
+    if (e.name === "firstName") {
+      setFirstName(e.value);
     }
     if (e.name === "password1") {
       setPass1(e.value);
@@ -52,6 +60,28 @@ function SignUp() {
                 className="form-control"
                 onChange={handleChange}
                 value={email}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="firstName">Förnamn</label>
+              <input
+                type="text"
+                name="firstName"
+                id="firstName"
+                className="form-control"
+                value={firstName}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="lastName">Efternamn</label>
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                className="form-control"
+                value={lastName}
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
@@ -110,6 +140,8 @@ function SignUp() {
                           .doc(result.user.uid)
                           .set({
                             username: result.user.displayName,
+                            firstName: firstName,
+                            lastName: lastName,
                             uid: result.user.uid,
                             drills: [],
                             sessions: [],

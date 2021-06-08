@@ -9,6 +9,7 @@ function Dashboard() {
   const [user, setUser] = useState({});
   const [id, setId] = useState("");
   const [teams, setTeams] = useState([]);
+  const [firstName, setFirstName] = useState("");
 
   auth.onAuthStateChanged((user) => {
     if (!user) {
@@ -26,6 +27,7 @@ function Dashboard() {
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
           setTeams(doc.data().teams);
+          setFirstName(doc.data().firstName)
         });
       })
       .catch((err) => {
@@ -37,8 +39,8 @@ function Dashboard() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-12">
-          <h1 className="h1">Välkommen, {user.displayName}</h1>
+        <div className="col-md-6">
+          <h1 className="h1">Välkommen, {firstName}</h1>
         </div>
       </div>
       <div className="row">
@@ -60,7 +62,7 @@ function Dashboard() {
         </div>
       </div>
       <div className="row">
-        <div className="col-lg-12">
+        <div className="col-lg-6">
           <h2 className="h2">Mina lag</h2>
           <ul className="list-group">
             {teams.map((team) => {
@@ -75,6 +77,9 @@ function Dashboard() {
             </li>
             {/* <Teams teams={teams} /> */}
           </ul>
+        </div>
+        <div className="col-lg-6">
+          <h2 className="h2">Kommande aktiviteter</h2>
         </div>
       </div>
     </div>

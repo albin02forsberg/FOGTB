@@ -40,7 +40,7 @@ function Dashboard() {
     <div className="container">
       <div className="row">
         <div className="col-md-6">
-          <h1 className="h1">Välkommen, {firstName}</h1>
+          <h1 className="h1">Välkommen, {firstName || user.displayName}</h1>
         </div>
       </div>
       <div className="row">

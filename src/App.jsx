@@ -20,6 +20,7 @@ import CreateTeam from "./Components/createteam";
 import Team from "./Components/team";
 import Newplayer from "./Components/newplayer";
 import Player from "./Components/player";
+import CreateTrainig from "./Components/createtraining";
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route path="/team/:id">
           <Team/>
+        </Route>
+        <Route path="/createtraining/:id">
+          <CreateTrainig/>
         </Route>
         <Route path="/addplayer/:id">
           <Newplayer/>

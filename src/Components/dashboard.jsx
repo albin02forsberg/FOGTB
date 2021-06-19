@@ -72,7 +72,7 @@ function Dashboard() {
                 </li>
               );
             })}
-            <li className="list-group-item">
+            <li className="list-group-item list-group-item-success">
               <Link to={"/createteam"}>Skapa lag</Link>
             </li>
             {/* <Teams teams={teams} /> */}

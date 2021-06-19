@@ -64,7 +64,7 @@ function Team() {
           <button className="btn btn-primary">Lägg till träning</button>
         </div>
         <div className="col-md-12">
-          <h2 className="h2">Spelare och statistik</h2>
+          <h2 className="h2"> Spelare och statistik</h2>
           <div className="table-responsive">
             <table className="table table-striped">
               <thead>

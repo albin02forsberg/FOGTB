@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { auth, db } from "../firebase/firebase";
+import Modal from "./modal";
 
 function Drill() {
   const { id } = useParams();
   const [drill, setDrill] = useState({});
   const [display, setDisplay] = useState(false);
+  // const [pop, setPop] = useState({ usersClick: [], clicks: 0 });
 
   useEffect(() => {
     db.collection("drills")
@@ -19,6 +21,17 @@ function Drill() {
         console.log(err);
       });
   }, [id]);
+
+  // useEffect(() => {
+  //   if (user) {
+  //     drill.usersClick.push(user.uid);
+  //     drill.clicks++;
+  //     db.collection("drills")
+  //       .doc(id)
+  //       .update(drill)
+  //       .catch((err) => console.log(err));
+  //   }
+  // }, [user, drill]);
 
   auth.onAuthStateChanged((user) => {
     if (user) {
@@ -35,22 +48,18 @@ function Drill() {
           <h1 className="h1">{drill.name}</h1>
           {display && (
             <div className="btn-group">
-              <Link>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => {
-                    db.collection("drills")
-                      .doc(drill.id)
-                      .delete()
-                      .then(() => window.location.replace("/"));
-                  }}
-                >
-                  Radera
-                </button>
-              </Link>
+              <button
+                type="button"
+                className="btn btn-danger"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                Radera
+              </button>
               <Link to={"/editdrill/" + drill.id}>
                 <button className="btn btn-primary">Redigera</button>
               </Link>
+              <Modal title="Hello" />
             </div>
           )}
           <hr />

@@ -45,7 +45,8 @@ function Createsession() {
       <div className="row">
         <div className="col-md-12">
           <h1 className="h1">Skapa träningspass</h1>
-          <table className="table table-striped table-responsive">
+          <div className="table-responsive">
+          <table className="table table-striped">
             <thead>
               <tr>
                 <th>Välj</th>
@@ -87,6 +88,8 @@ function Createsession() {
               })}
             </tbody>
           </table>
+
+          </div>
           <div className="form-group">
             <label htmlFor="name" className="h2">
               Träningspassets namn

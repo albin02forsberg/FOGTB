@@ -11,6 +11,8 @@ function DrillCreator() {
     organization: "",
     rules: "",
     explenation: "",
+    usersClick: [],
+    clicks: 0
   });
 
   const [img, setImg] = useState(null);

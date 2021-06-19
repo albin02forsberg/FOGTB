@@ -51,9 +51,6 @@ function SessionDrill(props) {
       <div className="col-md-6">
         <img src={drill.img_url} alt="" className="img-thumbnail" />
       </div>
-      <div className="col-md-12">
-        <hr />
-      </div>
     </div>
   );
 }

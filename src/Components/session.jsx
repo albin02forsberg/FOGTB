@@ -52,7 +52,6 @@ function Session() {
       </div>
       <div className="test">
         {drills.map((doc) => {
-          console.log(doc);
           return <SessionDrill id={doc} />;
         })}
       </div>

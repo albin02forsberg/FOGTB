@@ -8,7 +8,7 @@ function Drills() {
   const [drills, setDrills] = useState([]);
 
   useEffect(() => {
-    db.collection("drills")
+    db.collection("drills").orderBy("clicks", "desc")
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {

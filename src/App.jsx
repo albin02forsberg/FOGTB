@@ -1,7 +1,9 @@
 // Import react
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./static/App.min.css";
+// import "./static/App.min.css";
+// import "./static/foundation.css";
+import "bulma/css/bulma.min.css"
 
 // Import components
 import Dashboard from "./Components/dashboard";

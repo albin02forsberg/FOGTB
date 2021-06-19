@@ -49,7 +49,11 @@ function SessionDrill(props) {
         <p>{drill.rules}</p>
       </div>
       <div className="col-md-6">
-        <img src={drill.img_url} alt="" className="img-thumbnail" />
+        <img
+          src={drill.img_url}
+          alt=""
+          className="image  is-256x256 is-fullwidth"
+        />
       </div>
     </div>
   );

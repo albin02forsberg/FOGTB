@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -11,44 +11,77 @@ function Navbar() {
     setUser(u);
   });
   return (
-    <nav className="navbar navbar-expand-xl navbar-dark bg-dark">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+    // <nav className="navbar navbar-expand-xl navbar-dark bg-dark">
+    //   <div className="container-fluid">
+    //     <Link className="navbar-brand" to="/">
+    //       FOGTB
+    //     </Link>
+    //     <button
+    //       className="navbar-toggler"
+    //       type="button"
+    //       data-bs-toggle="collapse"
+    //       data-bs-target="#navbarTogglerDemo2"
+    //       aria-controls="navbarTogglerDemo2"
+    //       aria-expanded="false"
+    //       aria-label="Toggle navigation"
+    //     >
+    //       <span className="navbar-toggler-icon"></span>
+    //     </button>
+    //     <div className="collapse navbar-collapse show" id="navbarTogglerDemo2">
+    //       <ul className="navbar-nav mr-auto">
+    //         <li className="nav-item">
+    //           <Link className="nav-link" to="/">
+    //             Dashboard
+    //           </Link>
+    //         </li>
+    //         <li className="nav-item">
+    //           <Link className="nav-link" to="/drills">
+    //             Övningar
+    //           </Link>
+    //         </li>
+    //         <li className="nav-item">
+    //           <Link className="nav-link" to="/sessions">
+    //             Träningspass
+    //           </Link>
+    //         </li>
+    //       </ul>
+    //       <ul className="navbar-nav my-2 my-lg-0">
+    //         <LoginBtn user={user} />
+    //       </ul>
+    //     </div>
+    //   </div>
+    // </nav>
+
+    <nav className="navbar" role="navigation" area-label="main navigation">
+      <div className="navbar-brand">
+        <Link to="/" className="navbar-item">
           FOGTB
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo2"
-          aria-controls="navbarTogglerDemo2"
+        <a  href="navbarDrop"
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
           aria-expanded="false"
-          aria-label="Toggle navigation"
+          data-target="navbarDrop"
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse show" id="navbarTogglerDemo2">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Dashboard
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/drills">
-                Övningar
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/sessions">
-                Träningspass
-              </Link>
-            </li>
-          </ul>
-          <ul className="navbar-nav my-2 my-lg-0">
-            <LoginBtn user={user} />
-          </ul>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div className="navbar-menu" id="navbarDrop">
+        <div className="navbar-start">
+          <div className="navbar-item">
+            <Link to="/">Dashboard</Link>
+          </div>
+          <div className="navbar-item">
+            <Link to="/drills">Övningar</Link>
+          </div>
+          <div className="navbar-item">
+            <Link to="/sessions">Träningspass</Link>
+          </div>
         </div>
+        <LoginBtn user={user} />
       </div>
     </nav>
   );
@@ -57,40 +90,38 @@ function Navbar() {
 function LoginBtn(props) {
   if (props.user != null) {
     return (
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <Link className="nav-link" to={"/user/" + auth.currentUser.uid}>
+      <div className="navbar-end">
+        <div className="buttons">
+          <Link
+            className="button is-primary"
+            to={"/user/" + auth.currentUser.uid}
+          >
             {auth.currentUser.displayName}
           </Link>
-        </li>
-        <li className="nav-item">
           <Link
-            className="nav-link"
+            className="button is-danger"
             onClick={() => {
               auth.signOut();
               sessionStorage.setItem("user", null);
             }}
-            to="/login"
           >
             Logga ut
           </Link>
-        </li>
-      </ul>
+        </div>
+      </div>
     );
   } else {
     return (
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <Link className="nav-link" to="/login">
+      <div className="navbar-end">
+        <div className="buttons">
+          <Link className="button is-primary" to="/login">
             Logga in
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/signup">
+          <Link className="button is-secondary" to="/signup">
             Skapa konto
           </Link>
-        </li>
-      </ul>
+        </div>
+      </div>
     );
   }
 }

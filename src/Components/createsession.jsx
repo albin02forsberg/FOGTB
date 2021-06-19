@@ -42,10 +42,9 @@ function Createsession() {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <h1 className="h1">Skapa träningspass</h1>
-          <div className="table-responsive">
+      <div className="columns">
+        <div className="column">
+          <h1 >Skapa träningspass</h1>
           <table className="table table-striped">
             <thead>
               <tr>
@@ -89,9 +88,8 @@ function Createsession() {
             </tbody>
           </table>
 
-          </div>
-          <div className="form-group">
-            <label htmlFor="name" className="h2">
+          <div className="field">
+            <label htmlFor="name" className="label">
               Träningspassets namn
             </label>
             <input
@@ -99,15 +97,15 @@ function Createsession() {
               name="name"
               id="name"
               placeholder="Passets namn"
-              className="form-control"
+              className="input control"
               onChange={handleChange}
               value={session.name}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="level">Nivå</label>
+            <label htmlFor="level" className="label">Nivå</label>
             <select
-              className="form-control"
+              className="select control"
               onChange={handleChange}
               name="level"
               id="level"
@@ -120,8 +118,8 @@ function Createsession() {
               <option value="3 mot 3">3 mot 3</option>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="description" className="h2">
+          <div className="field">
+            <label htmlFor="description" className="label">
               Beskrivning
             </label>
             <textarea
@@ -130,16 +128,16 @@ function Createsession() {
               type="text"
               name="description"
               id="description"
-              className="form-control"
+              className="textarea control"
               onChange={handleChange}
               value={session.description}
               placeholder="Beskrivning av passet"
             />
           </div>
           <p>{error}</p>
-          <div className="form-group">
+          <div className="field">
             <button
-              className="btn btn-primary form-control"
+              className="button is-success"
               onClick={() => {
                 if (list.length <= 0) {
                   setError("Du har inga övningar valda...");
@@ -168,7 +166,6 @@ function Createsession() {
           </div>
         </div>
       </div>
-      <div className="row"></div>
     </div>
   );
 }

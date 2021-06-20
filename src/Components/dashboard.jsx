@@ -37,47 +37,58 @@ function Dashboard() {
   }, [id]);
 
   return (
-    <div className="container">
-      <div className="columns">
-        <div className="column">
-          <h1 className="title">Välkommen, {firstName || user.displayName}</h1>
+    <div>
+      <div className="hero is-primary">
+        <div className="hero-body">
+          <p className="title">Välkommen, {firstName || user.displayName}</p>
+          <p className="subtitle">
+            Dashboard
+          </p>
         </div>
       </div>
-      <div className="tile is-parent">
-        <Card
-          title="Övningar"
-          text="Visa och skapa övningar"
-          link="drills"
-          btntext="övningar"
-        />
-        <Card
-          title="Träningspass"
-          text="Visa och skapa träninspass"
-          link="sessions"
-          btntext="träningspass"
-        />
-      </div>
+      <div className="container">
+        <div className="columns">
+          <div className="column">
+            <div className="tile is-parent">
+              <Card
+                title="Övningar"
+                text="Visa och skapa övningar"
+                link="drills"
+                btntext="övningar"
+              />
+              <Card
+                title="Träningspass"
+                text="Visa och skapa träninspass"
+                link="sessions"
+                btntext="träningspass"
+              />
+            </div>
+          </div>
+        </div>
         <div className="column is-6">
           <aside className="menu">
             <p className="menu-label">Mina lag</p>
             <ul className="menu-list menu-list-border-left">
               {teams.map((team) => {
                 return (
-                  <li >
+                  <li>
                     <Link to={"/team/" + team.id}>{team.name}</Link>
                   </li>
                 );
               })}
               <li>
-                <Link  className="is-active" to={"/createteam"}>Skapa lag</Link>
+                <Link className="is-active" to={"/createteam"}>
+                  Skapa lag
+                </Link>
               </li>
               {/* <Teams teams={teams} /> */}
             </ul>
           </aside>
         </div>
-        <div className="column is-6" >
+        <div className="column is-6">
           <h2 className="h2">Kommande aktiviteter</h2>
         </div>
+      </div>
     </div>
   );
 }

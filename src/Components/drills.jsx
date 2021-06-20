@@ -24,51 +24,37 @@ function Drills() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="columns">
-        <div className="column">
-          <h1 className="title">Övningar</h1>
-          <Link to="/drillcreator">
-            <button className="button is-primary">Skapa övningar</button>
-          </Link>
-          <hr />
+    <div className="test">
+        <div className="hero is-primary">
+          <div className="hero-body is-center">
+            <h1 className="title">Övningar</h1>
+            <Link to="/drillcreator">
+              <button className="button is-secondary">Skapa övningar</button>
+            </Link>
+          </div>
         </div>
-      </div>
-      <div className="tile is-ancestor">
-        <div className="column is-12">
-          <aside className="menu">
-            <div className="menu-label">Övningar</div>
-            <ul className="menu-list">
-              {drills.map((doc) => {
-                return (
-                  <li>
-                    <Link to={"/drill/" + doc.id}>
-                      {doc.name} - {doc.level} - {doc.type}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </aside>
+      <div className="container">
+        <div className="columns">
+          <div className="column">
+            <aside className="menu">
+              <p className="menu-label">Övningar</p>
+              <ul className="menu-list">
+                {drills.map((doc) => {
+                  return (
+                    <li>
+                      <Link to={"/drill/" + doc.id} className="is-link">
+                        {doc.name} - {doc.level} - {doc.type}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </aside>
+          </div>
         </div>
-
-        {/* {drills.map((doc) => {
-          return (
-            // <Card
-            //   title={doc.name}
-            //   key={doc.id}
-            //   subtitle={doc.type}
-            //   level={doc.level}
-            //   link={"/drill/" + doc.id}
-            //   btntext="övning"
-            //   img_url={doc.img_url}
-            // />
-            <p>h</p>
-          );
-        })} */}
-      </div>
-      <div className="row">
-        <div className="col-md-12"></div>
+        <div className="row">
+          <div className="col-md-12"></div>
+        </div>
       </div>
     </div>
   );

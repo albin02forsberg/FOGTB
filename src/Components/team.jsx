@@ -40,78 +40,82 @@ function Team() {
   }, [id]);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <h1 className="h1">{team.name}</h1>
-        </div>
-        <div className="col-md-12">
+    <div className="div">
+      <div className="hero is-primary">
+        <div className="hero-body">
+          <p className="title">{team.name}</p>
           {users.includes(user.uid) && (
-            <button className="btn btn-primary">Redigera lag</button>
+            <button className="button is-secondary">Redigera lag</button>
           )}
         </div>
-        <div className="col-md-6">
-          <h2 className="h2">Matcher</h2>
+      </div>
+      <div className="container">
+        <div className="columns">
+          <div className="column">
+            <h2 className="subtitle">Matcher</h2>
 
-          <ul className="list-group"></ul>
+            <ul className="list-group"></ul>
 
-          <button className="btn btn-primary">Lägg till match</button>
+            <button className="button is-primary">Lägg till match</button>
+          </div>
+          <div className="column">
+            <h2 className="subtitle">Träningar</h2>
+            <ul className="list-group"></ul>
+
+            <button className="button is-primary">Lägg till träning</button>
+          </div>
         </div>
-        <div className="col-md-6">
-          <h2 className="h2">Träningar</h2>
-          <ul className="list-group"></ul>
+        <div className="columns">
+          <div className="column">
+            <h2 className="subtitle"> Spelare och statistik</h2>
+            <div className="table-container">
+              <table className="table is-fullwidth is-striped is-hoverable">
+                <thead>
+                  <tr>
+                    <td>Namn</td>
+                    <td>Ålder</td>
+                    <td>Matcher</td>
+                    <td>Träningar</td>
+                    <td>Mål</td>
+                    <td>Assist</td>
+                    <td>Gula kort</td>
+                    <td>Röda kort</td>
+                    <td>Position</td>
+                  </tr>
+                </thead>
 
-          <button className="btn btn-primary">Lägg till träning</button>
-        </div>
-        <div className="col-md-12">
-          <h2 className="h2"> Spelare och statistik</h2>
-          <div className="table-responsive">
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <td>Namn</td>
-                  <td>Ålder</td>
-                  <td>Matcher</td>
-                  <td>Träningar</td>
-                  <td>Mål</td>
-                  <td>Assist</td>
-                  <td>Gula kort</td>
-                  <td>Röda kort</td>
-                  <td>Position</td>
-                </tr>
-              </thead>
-
-              <tbody>
-                {players.map((doc) => {
-                  return (
-                    <tr>
-                      <td>
-                        <Link to={"/player/" + doc.id}>{doc.name}</Link>
-                      </td>
-                      <td>{doc.year}</td>
-                      <td>{doc.games.Lenght}</td>
-                      <td>{doc.trainings.Length}</td>
-                      <td>{doc.goals}</td>
-                      <td>{doc.assist}</td>
-                      <td>{doc.yellow}</td>
-                      <td>{doc.red}</td>
-                      <td>{doc.pos}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colSpan="7">
-                    <Link className="btn btn-primary" to={"/addplayer/" + id}>
-                      Lägg till spelare
-                    </Link>
-                  </td>
-                  <td>Antal spelare:</td>
-                  <td>{players.length}</td>
-                </tr>
-              </tfoot>
-            </table>
+                <tbody>
+                  {players.map((doc) => {
+                    return (
+                      <tr>
+                        <td>
+                          <Link to={"/player/" + doc.id}>{doc.name}</Link>
+                        </td>
+                        <td>{doc.year}</td>
+                        <td>{doc.games.Lenght}</td>
+                        <td>{doc.trainings.Length}</td>
+                        <td>{doc.goals}</td>
+                        <td>{doc.assist}</td>
+                        <td>{doc.yellow}</td>
+                        <td>{doc.red}</td>
+                        <td>{doc.pos}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colSpan="7">
+                      <Link className="button is-primary" to={"/addplayer/" + id}>
+                        Lägg till spelare
+                      </Link>
+                    </td>
+                    <td>Antal spelare:</td>
+                    <td>{players.length}</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
         </div>
       </div>

@@ -14,10 +14,8 @@ function Player() {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <h1 className="h1">{player.name}</h1>
-        </div>
+        <div className="column">
+          <h1 className="title">{player.name}</h1>
       </div>
     </div>
   );

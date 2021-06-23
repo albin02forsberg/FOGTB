@@ -42,10 +42,10 @@ function Createsession() {
 
   return (
     <div className="container">
-      <div className="columns">
-        <div className="column">
-          <h1 >Skapa träningspass</h1>
-          <table className="table table-striped">
+      <div className="column">
+        <h1>Skapa träningspass</h1>
+        <div className="table-container">
+          <table className="table table-striped is-fullwidth">
             <thead>
               <tr>
                 <th>Välj</th>
@@ -87,83 +87,86 @@ function Createsession() {
               })}
             </tbody>
           </table>
+        </div>
 
-          <div className="field">
-            <label htmlFor="name" className="label">
-              Träningspassets namn
-            </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Passets namn"
-              className="input control"
-              onChange={handleChange}
-              value={session.name}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="level" className="label">Nivå</label>
-            <select
-              className="select control"
-              onChange={handleChange}
-              name="level"
-              id="level"
-              value={session.level}
-            >
-              <option value="11 mot 11">11 mot 11</option>
-              <option value="9 mot 9">9 mot 9</option>
-              <option value="7 mot 7">7 mot 7</option>
-              <option value="5 mot 5">5 mot 5</option>
-              <option value="3 mot 3">3 mot 3</option>
-            </select>
-          </div>
-          <div className="field">
-            <label htmlFor="description" className="label">
-              Beskrivning
-            </label>
-            <textarea
-              cols="10"
-              rows="10"
-              type="text"
-              name="description"
-              id="description"
-              className="textarea control"
-              onChange={handleChange}
-              value={session.description}
-              placeholder="Beskrivning av passet"
-            />
-          </div>
-          <p>{error}</p>
-          <div className="field">
-            <button
-              className="button is-success"
-              onClick={() => {
-                if (list.length <= 0) {
-                  setError("Du har inga övningar valda...");
-                } else if ((session.name === null)) {
-                  setError("Ge passet ett namn");
-                } else if ((session.description === null)) {
-                  setError("Ge passet en beskrivning");
-                } else {
-                  db.collection("sessions")
-                    .add({
-                      ...session,
-                      drills: list,
-                    })
-                    .then((ref) => {
-                      db.collection("sessions")
-                        .doc(ref.id)
-                        .update({ id: ref.id }).then(()=>{
-                          window.location.replace("/session/" + ref.id)
-                        });
-                    });
-                }
-              }}
-            >
-              Spara och fortsätt
-            </button>
-          </div>
+        <div className="field">
+          <label htmlFor="name" className="label">
+            Träningspassets namn
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Passets namn"
+            className="input control"
+            onChange={handleChange}
+            value={session.name}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="level" className="label">
+            Nivå
+          </label>
+          <select
+            className="select control"
+            onChange={handleChange}
+            name="level"
+            id="level"
+            value={session.level}
+          >
+            <option value="11 mot 11">11 mot 11</option>
+            <option value="9 mot 9">9 mot 9</option>
+            <option value="7 mot 7">7 mot 7</option>
+            <option value="5 mot 5">5 mot 5</option>
+            <option value="3 mot 3">3 mot 3</option>
+          </select>
+        </div>
+        <div className="field">
+          <label htmlFor="description" className="label">
+            Beskrivning
+          </label>
+          <textarea
+            cols="10"
+            rows="10"
+            type="text"
+            name="description"
+            id="description"
+            className="textarea control"
+            onChange={handleChange}
+            value={session.description}
+            placeholder="Beskrivning av passet"
+          />
+        </div>
+        <p>{error}</p>
+        <div className="field">
+          <button
+            className="button is-success"
+            onClick={() => {
+              if (list.length <= 0) {
+                setError("Du har inga övningar valda...");
+              } else if (session.name === null) {
+                setError("Ge passet ett namn");
+              } else if (session.description === null) {
+                setError("Ge passet en beskrivning");
+              } else {
+                db.collection("sessions")
+                  .add({
+                    ...session,
+                    drills: list,
+                  })
+                  .then((ref) => {
+                    db.collection("sessions")
+                      .doc(ref.id)
+                      .update({ id: ref.id })
+                      .then(() => {
+                        window.location.replace("/session/" + ref.id);
+                      });
+                  });
+              }
+            }}
+          >
+            Spara och fortsätt
+          </button>
         </div>
       </div>
     </div>

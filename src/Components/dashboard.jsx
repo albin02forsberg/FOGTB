@@ -41,31 +41,29 @@ function Dashboard() {
       <div className="hero is-primary">
         <div className="hero-body">
           <p className="title">Välkommen, {firstName || user.displayName}</p>
-          <p className="subtitle">
-            Dashboard
-          </p>
+          <p className="subtitle">Dashboard</p>
         </div>
       </div>
       <div className="container">
-        <div className="columns">
-          <div className="column">
-            <div className="tile is-parent">
-              <Card
-                title="Övningar"
-                text="Visa och skapa övningar"
-                link="drills"
-                btntext="övningar"
-              />
-              <Card
-                title="Träningspass"
-                text="Visa och skapa träninspass"
-                link="sessions"
-                btntext="träningspass"
-              />
-            </div>
+        <div className="column">
+          <div className="tile is-parent">
+            <Card
+              title="Övningar"
+              text="Visa och skapa övningar"
+              link="drills"
+              btntext="övningar"
+            />
+            <Card
+              title="Träningspass"
+              text="Visa och skapa träninspass"
+              link="sessions"
+              btntext="träningspass"
+            />
           </div>
         </div>
-        <div className="column is-6">
+        <div className="columns">
+
+        <div className="column is-6 mx-2">
           <aside className="menu">
             <p className="menu-label">Mina lag</p>
             <ul className="menu-list menu-list-border-left">
@@ -87,6 +85,7 @@ function Dashboard() {
         </div>
         <div className="column is-6">
           <h2 className="h2">Kommande aktiviteter</h2>
+        </div>
         </div>
       </div>
     </div>

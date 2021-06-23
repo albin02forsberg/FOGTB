@@ -48,7 +48,7 @@ function Editdrill() {
 
   return (
     <div className="container">
-      <div className="col-md-12">
+      <div className="column">
         <h1 className="title">Redigera övning</h1>
         <form>
           <div className="field">

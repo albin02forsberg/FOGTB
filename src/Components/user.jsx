@@ -41,13 +41,10 @@ function User() {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <h1 className="h1">{user.username}</h1>
+        <div className="column">
+          <h1 className="title">{user.username}</h1>
         </div>
-      </div>
-      <div className="row">
-        <div className="col-md-12">
+      <div className="column">
           <h2 className="h2">Övningar</h2>
           <div className="card-columns">
             {drills.map((doc) => {
@@ -63,7 +60,6 @@ function User() {
                 />
               );
             })}
-          </div>
         </div>
         <div className="col-md-12">
           <h2 className="h2">Träningspass</h2>

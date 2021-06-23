@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { auth  } from "../firebase/firebase";
+import { auth } from "../firebase/firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -19,51 +19,49 @@ function Login() {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <div className="h1">Logga in</div>
-          <form>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                className="form-control"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Lösenord</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                className="form-control"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => {
-                  auth
-                    .signInWithEmailAndPassword(email, password)
-                    .then(() => {
-                      window.location.replace("/");
-                    })
-                    .catch((err) => {
-                      setError(err.message);
-                    });
-                }}
-              >
-                Logga in
-              </button>
-            </div>
-            {error}
-          </form>
-        </div>
+      <div className="column">
+        <div className="title">Logga in</div>
+        <form>
+          <div className="field">
+            <label htmlFor="email" className="label">Email</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              className="control input"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="password" className="label">Lösenord</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              className="control input"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="field">
+            <button
+              type="button"
+              className="button is-primary"
+              onClick={() => {
+                auth
+                  .signInWithEmailAndPassword(email, password)
+                  .then(() => {
+                    window.location.replace("/");
+                  })
+                  .catch((err) => {
+                    setError(err.message);
+                  });
+              }}
+            >
+              Logga in
+            </button>
+          </div>
+          {error}
+        </form>
       </div>
     </div>
   );

@@ -43,21 +43,21 @@ function Drill() {
 
   return (
     <div className="container">
-      <div className="columns">
-        <div className="column">
+      <div className="columns is-multiline mx-1">
+        <div className="column is-5 ">
           <h1 className="title">{drill.name}</h1>
           {display && (
-            <div className="btn-group">
+            <div className="buttons">
               <button
                 type="button"
-                className="btn btn-danger"
+                className="button is-danger"
                 data-toggle="modal"
                 data-target="#exampleModal"
               >
                 Radera
               </button>
               <Link to={"/editdrill/" + drill.id}>
-                <button className="btn btn-primary">Redigera</button>
+                <button className="button is-primary">Redigera</button>
               </Link>
               <Modal title="Hello" />
             </div>
@@ -95,11 +95,7 @@ function Drill() {
           <p>{drill.rules}</p>
         </div>
         <div className="column">
-          <img
-            src={drill.img_url}
-            alt={drill.name}
-            className="image"
-          />
+          <img src={drill.img_url} alt={drill.name} className="image" />
         </div>
       </div>
     </div>

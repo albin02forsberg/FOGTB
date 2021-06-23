@@ -52,30 +52,30 @@ function CreateTeam() {
 
   return (
     <div className="container">
-      <div className="row">
+      <div className="column">
         <div className="col-md-12">
-          <h1 className="h1">Skapa lag</h1>
+          <h1 className="title">Skapa lag</h1>
         </div>
       </div>
-      <div className="row">
+      <div className="column">
         <div className="col-md-12">
           <form>
-            <div className="form-group">
-              <label htmlFor="name">Lagets namn</label>
+            <div className="field">
+              <label htmlFor="name" className="label">Lagets namn</label>
               <input
                 type="text"
                 name="name"
                 id="name"
-                className="form-control"
+                className="control input"
                 placeholder="Lagets namn"
                 value={team.name}
                 onChange={handleChange}
               />
             </div>
-            <div className="form-group">
+            <div className="field">
               <button
                 type="button"
-                className="btn btn-primary"
+                className="button is-primary"
                 onClick={handleSubmit}
               >
                 Spara

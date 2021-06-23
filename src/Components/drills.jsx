@@ -25,35 +25,30 @@ function Drills() {
 
   return (
     <div className="test">
-        <div className="hero is-primary">
-          <div className="hero-body is-center">
-            <h1 className="title">Övningar</h1>
-            <Link to="/drillcreator">
-              <button className="button is-secondary">Skapa övningar</button>
-            </Link>
-          </div>
+      <div className="hero is-primary">
+        <div className="hero-body is-center">
+          <h1 className="title">Övningar</h1>
+          <Link to="/drillcreator">
+            <button className="button is-secondary">Skapa övningar</button>
+          </Link>
         </div>
+      </div>
       <div className="container">
-        <div className="columns">
-          <div className="column">
-            <aside className="menu">
-              <p className="menu-label">Övningar</p>
-              <ul className="menu-list">
-                {drills.map((doc) => {
-                  return (
-                    <li>
-                      <Link to={"/drill/" + doc.id} className="is-link">
-                        {doc.name} - {doc.level} - {doc.type}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </aside>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-12"></div>
+        <div className="column">
+          <aside className="menu">
+            <p className="menu-label">Övningar</p>
+            <ul className="menu-list">
+              {drills.map((doc) => {
+                return (
+                  <li>
+                    <Link to={"/drill/" + doc.id} className="is-link">
+                      {doc.name} - {doc.level} - {doc.type}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </aside>
         </div>
       </div>
     </div>

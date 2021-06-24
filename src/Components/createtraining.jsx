@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
 function CreateTraining() {
-  const [training, setTraining] = useState({
-    date: "",
-    time: "",
-    place: "",
-  });
+  // const [training, setTraining] = useState({
+  //   date: "",
+  //   time: "",
+  //   place: "",
+  // });
 
   return (
     <div className="container">

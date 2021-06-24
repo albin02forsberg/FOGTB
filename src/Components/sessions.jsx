@@ -33,7 +33,7 @@ function Sessions() {
               {sessions.map((doc) => {
                 return (
                   <li>
-                    <Link to={"/drill/" + doc.id} className="is-link">
+                    <Link to={"/session/" + doc.id} className="is-link">
                       {doc.name} - {doc.level}
                     </Link>
                   </li>

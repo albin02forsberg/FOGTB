@@ -24,35 +24,39 @@ function Session() {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <h1 className="h1">{session.name}</h1>
-          <h2 className="h2">Beskrivning</h2>
-          <p>{session.description}</p>
-
-          <table className="table table-striped table-responsive">
+      <div className="column">
+        <h1 className="title">{session.name}</h1>
+        <h2 className="subtitle">Beskrivning av passet</h2>
+        <p>{session.description}</p>
+        <div className="table-container">
+          <table className="table table-striped is-fullwidth">
             <thead>
               <tr>
-                <td>Moment</td>
                 <td>Nivå</td>
                 <td>Antal övningar</td>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>{session.moment}</td>
+                {/* <td>{session.moment}</td> */}
                 <td>{session.level}</td>
                 <td>{drills.length + " st"} </td>
               </tr>
             </tbody>
           </table>
-
-          {/* <p>{JSON.stringify(session.drills)}</p> */}
+          <hr />
         </div>
+
+        {/* <p>{JSON.stringify(session.drills)}</p> */}
       </div>
-      <div className="test">
+      <div className="columns is-multiline mx-4">
         {drills.map((doc) => {
-          return <SessionDrill id={doc} />;
+          return (
+            <div>
+              <SessionDrill id={doc} />
+              <hr />
+            </div>
+          );
         })}
       </div>
     </div>

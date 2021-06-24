@@ -60,8 +60,9 @@ function Team() {
         <div className="column">
           <h2 className="subtitle">Träningar</h2>
           <ul className="list-group"></ul>
-
-          <button className="button is-primary">Lägg till träning</button>
+          <Link to={"/createtraining/" + id}>
+            <button className="button is-primary">Lägg till träning</button>
+          </Link>
         </div>
         <div className="column">
           <h2 className="subtitle"> Spelare och statistik</h2>

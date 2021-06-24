@@ -69,22 +69,24 @@ function Drill() {
               {drill.creator_username}
             </Link>{" "}
           </p>
-          <table className="table table-striped table-responsive">
-            <thead>
-              <tr>
-                <th>Moment</th>
-                <th>Typ</th>
-                <th>Nivå</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{drill.moment}</td>
-                <td>{drill.type}</td>
-                <td>{drill.level}</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="table-container">
+            <table className="table table-striped table-responsive is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Moment</th>
+                  <th>Typ</th>
+                  <th>Nivå</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{drill.moment}</td>
+                  <td>{drill.type}</td>
+                  <td>{drill.level}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <h2 className="subtitle">Varför?</h2>
           <p>{drill.explenation}</p>
           <h2 className="subtitle">Beskrivning</h2>

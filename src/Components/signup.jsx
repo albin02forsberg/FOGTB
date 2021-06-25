@@ -45,119 +45,117 @@ function SignUp() {
   };
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <h1 className="h1">Skapa konto</h1>
-        </div>
-        <div className="col-md-12">
-          <form>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                className="form-control"
-                onChange={handleChange}
-                value={email}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="firstName">Förnamn</label>
-              <input
-                type="text"
-                name="firstName"
-                id="firstName"
-                className="form-control"
-                value={firstName}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="lastName">Efternamn</label>
-              <input
-                type="text"
-                name="lastName"
-                id="lastName"
-                className="form-control"
-                value={lastName}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="username">Användarnamn</label>
-              <input
-                type="text"
-                name="username"
-                id="username"
-                className="form-control"
-                onChange={handleChange}
-                value={username}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password1">Lösenord</label>
-              <input
-                type="password"
-                name="password1"
-                id="password1"
-                onChange={handleChange}
-                className="form-control"
-                value={pass1}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password2">Bekräfta lösenord</label>
-              <input
-                type="password"
-                name="password2"
-                id="password2"
-                onChange={handleChange}
-                className="form-control"
-                value={pass2}
-              />
-            </div>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => {
-                // auth
-                //   .createUserWithEmailAndPassword(email, pass1)
-                //   .then((result) => {
-                //     console.log(result);
-                //     result.user.updateProfile({
-                //       displayName: username,
-                //     }))
-                auth
-                  .createUserWithEmailAndPassword(email, pass1)
-                  .then((result) => {
-                    result.user
-                      .updateProfile({
-                        displayName: username,
-                      })
-                      .then(() => {
-                        db.collection("users")
-                          .doc(result.user.uid)
-                          .set({
-                            username: result.user.displayName,
-                            firstName: firstName,
-                            lastName: lastName,
-                            uid: result.user.uid,
-                            drills: [],
-                            sessions: [],
-                            teams: [],
-                          })
-                          .then(window.location.replace("/"));
-                      });
-                  })
-                  .catch((err) => setErr(err.message));
-              }}
-            >
-              Skapa konto
-            </button>
-          </form>
-          {err}
-        </div>
+      <div className="column">
+        <h1 className="title">Skapa konto</h1>
+      </div>
+      <div className="column">
+        <form>
+          <div className="field">
+            <label htmlFor="email" className="label">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              className="control input"
+              onChange={handleChange}
+              value={email}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="firstName" className="label">Förnamn</label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              className="control input"
+              value={firstName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="lastName" className="label">Efternamn</label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              className="control input"
+              value={lastName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="username" className="label">Användarnamn</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              className="control input"
+              onChange={handleChange}
+              value={username}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="password1" className="label">Lösenord</label>
+            <input
+              type="password"
+              name="password1"
+              id="password1"
+              onChange={handleChange}
+              className="control input"
+              value={pass1}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="password2" className="label">Bekräfta lösenord</label>
+            <input
+              type="password"
+              name="password2"
+              id="password2"
+              onChange={handleChange}
+              className="control input"
+              value={pass2}
+            />
+          </div>
+          <button
+            type="button"
+            className="button is-primary"
+            onClick={() => {
+              // auth
+              //   .createUserWithEmailAndPassword(email, pass1)
+              //   .then((result) => {
+              //     console.log(result);
+              //     result.user.updateProfile({
+              //       displayName: username,
+              //     }))
+              auth
+                .createUserWithEmailAndPassword(email, pass1)
+                .then((result) => {
+                  result.user
+                    .updateProfile({
+                      displayName: username,
+                    })
+                    .then(() => {
+                      db.collection("users")
+                        .doc(result.user.uid)
+                        .set({
+                          username: result.user.displayName,
+                          firstName: firstName,
+                          lastName: lastName,
+                          uid: result.user.uid,
+                          drills: [],
+                          sessions: [],
+                          teams: [],
+                        })
+                        .then(window.location.replace("/"));
+                    });
+                })
+                .catch((err) => setErr(err.message));
+            }}
+          >
+            Skapa konto
+          </button>
+        </form>
+        {err}
       </div>
     </div>
   );

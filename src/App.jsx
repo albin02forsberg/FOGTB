@@ -1,7 +1,9 @@
 // Import react
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./static/App.min.css";
+// import "./static/App.min.css";
+// import "./static/foundation.css";
+import "bulma/css/bulma.min.css"
 
 // Import components
 import Dashboard from "./Components/dashboard";
@@ -21,6 +23,7 @@ import Team from "./Components/team";
 import Newplayer from "./Components/newplayer";
 import Player from "./Components/player";
 import CreateTrainig from "./Components/createtraining";
+import Footer from "./Components/footer";
 
 function App() {
   return (
@@ -76,6 +79,7 @@ function App() {
           <Dashboard />
         </Route>
       </Switch>
+      <Footer/>
     </Router>
   );
 }

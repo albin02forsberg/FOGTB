@@ -48,14 +48,16 @@ function Editdrill() {
 
   return (
     <div className="container">
-      <div className="col-md-12">
-        <h1 className="h1">Redigera övning</h1>
+      <div className="column">
+        <h1 className="title">Redigera övning</h1>
         <form>
-          <div className="form-group">
-            <label htmlFor="name">Namn</label>
+          <div className="field">
+            <label htmlFor="name" className="label">
+              Namn
+            </label>
             <input
               type="text"
-              className="form-control"
+              className=" input control"
               name="name"
               id="name"
               placeholder="Namn på övningen"
@@ -64,11 +66,13 @@ function Editdrill() {
               value={drill.name}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="type">Typ av övning</label>
+          <div className="field">
+            <label htmlFor="type" className="label">
+              Typ av övning
+            </label>
             <select
               name="type"
-              className="form-control custom-select"
+              className="control select"
               id="type"
               required
               onChange={handleChange}
@@ -79,11 +83,13 @@ function Editdrill() {
               <option value="Fysövning">Fysövning</option>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="level">Nivå</label>
+          <div className="field">
+            <label htmlFor="level" className="label">
+              Nivå
+            </label>
             <select
               name="level"
-              className="form-control custom-select"
+              className="control select"
               id="level"
               required
               onChange={handleChange}
@@ -96,12 +102,14 @@ function Editdrill() {
               <option value="3 mot 3">3 mot 3</option>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="moment">Moment</label>
+          <div className="field">
+            <label htmlFor="moment" className="label">
+              Moment
+            </label>
             <select
               name="moment"
               id="moment"
-              className="form-control custom-select"
+              className="control select"
               required
               onChange={handleChange}
               value={drill.moment}
@@ -145,56 +153,64 @@ function Editdrill() {
               </optgroup>
             </select>
           </div>
-          <div className="form-group">
-            <label htmlFor="explination">Varför?</label>
+          <div className="field">
+            <label htmlFor="explination" className="label">
+              Varför?
+            </label>
             <textarea
               name="explenation"
               id="explenation"
               cols="30"
               rows="10"
-              className="form-control"
+              className="control textarea"
               placeholder="Ange varför detta ska tränas kopplat till vad spelaren och laget ska förstärka eller förbättra. Exempelvis: Spelövning: spela sig ur press i speluppbyggnaden. Färdighetsövning:  förbättra tillslagstekniken inför spelet"
               required
               onChange={handleChange}
               value={drill.explenation}
             ></textarea>
           </div>
-          <div className="form-group">
-            <label htmlFor="description">Beskrivning</label>
+          <div className="field">
+            <label htmlFor="description" className="label">
+              Beskrivning
+            </label>
             <textarea
               name="description"
               id="description"
               cols="30"
               rows="10"
-              className="form-control"
+              className="control textarea"
               placeholder="Beteenden/aktioner som gör att övningens vad uppfylls. För spelövning: Vad prioriteras i de aktuella skedena?  När ska spelarna agera? Vilket arbetssätt ska spelarna tillämpa? För färdighetsövning: Ange när och hur spelaren ska agera. Driv bollen framåt för att erövra tom yta."
               required
               onChange={handleChange}
               value={drill.description}
             ></textarea>
           </div>
-          <div className="form-group">
-            <label htmlFor="organization">Organisation</label>
+          <div className="field">
+            <label htmlFor="organization" className="label">
+              Organisation
+            </label>
             <textarea
               name="organization"
               id="organization"
               cols="30"
               rows="10"
-              className="form-control"
+              className="control textarea"
               placeholder="Antal spelare (inklusive målvakter och jokrar), yta eller spelplan med mål, bollar, koner och västar. För spelövning: Lagens formation."
               required
               onChange={handleChange}
               value={drill.organization}
             ></textarea>
           </div>
-          <div className="form-group">
-            <label htmlFor="rules">Anvisningar</label>
+          <div className="field">
+            <label htmlFor="rules" className="label">
+              Anvisningar
+            </label>
             <textarea
               name="rules"
               id="rules"
               cols="30"
               rows="10"
-              className="form-control"
+              className="control textarea"
               placeholder="Regler, förutsättningar och kort övningsbeskrivning. Vad är uppgiften?"
               required
               onChange={handleChange}
@@ -203,13 +219,14 @@ function Editdrill() {
           </div>
           <button
             type="button"
-            className="btn btn-success form-control"
+            className="button is-success control"
             onClick={handelSumbit}
           >
             Uppdatera
           </button>
         </form>
       </div>
+      <br />
     </div>
   );
 }

@@ -27,7 +27,7 @@ function Dashboard() {
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
           setTeams(doc.data().teams);
-          setFirstName(doc.data().firstName)
+          setFirstName(doc.data().firstName);
         });
       })
       .catch((err) => {
@@ -37,15 +37,16 @@ function Dashboard() {
   }, [id]);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6">
-          <h1 className="h1">Välkommen, {firstName || user.displayName}</h1>
+    <div>
+      <div className="hero is-primary">
+        <div className="hero-body">
+          <p className="title">Välkommen, {firstName || user.displayName}</p>
+          <p className="subtitle">Dashboard</p>
         </div>
       </div>
-      <div className="row">
-        <div className="col-lg-12">
-          <div className="card-deck">
+      <div className="container">
+        <div className="column">
+          <div className="tile is-parent">
             <Card
               title="Övningar"
               text="Visa och skapa övningar"
@@ -60,26 +61,31 @@ function Dashboard() {
             />
           </div>
         </div>
-      </div>
-      <div className="row">
-        <div className="col-lg-6">
-          <h2 className="h2">Mina lag</h2>
-          <ul className="list-group">
-            {teams.map((team) => {
-              return (
-                <li className="list-group-item">
-                  <Link to={"/team/" + team.id}>{team.name}</Link>
-                </li>
-              );
-            })}
-            <li className="list-group-item list-group-item-success">
-              <Link to={"/createteam"}>Skapa lag</Link>
-            </li>
-            {/* <Teams teams={teams} /> */}
-          </ul>
+        <div className="columns">
+
+        <div className="column is-6 mx-2">
+          <aside className="menu">
+            <p className="menu-label">Mina lag</p>
+            <ul className="menu-list menu-list-border-left">
+              {teams.map((team) => {
+                return (
+                  <li>
+                    <Link to={"/team/" + team.id}>{team.name}</Link>
+                  </li>
+                );
+              })}
+              <li>
+                <Link className="is-active" to={"/createteam"}>
+                  Skapa lag
+                </Link>
+              </li>
+              {/* <Teams teams={teams} /> */}
+            </ul>
+          </aside>
         </div>
-        <div className="col-lg-6">
+        <div className="column is-6">
           <h2 className="h2">Kommande aktiviteter</h2>
+        </div>
         </div>
       </div>
     </div>

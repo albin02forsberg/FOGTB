@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { db } from "../firebase/firebase";
-import Card from "./card";
 
 function Sessions() {
   const [sessions, setSession] = useState([]);
@@ -17,28 +16,31 @@ function Sessions() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <h1 className="h1">Träningspass</h1>
+    <div>
+      <div className="hero is-primary">
+        <div className="hero-body">
+          <div className="title">Träningspass</div>
           <Link to="/createsession">
-            <button className="btn btn-primary">Skapa träningspass</button>
+            <button className="button is-secondary">Skapa träningspass</button>
           </Link>
-          <hr />
-          <div className="card-columns">
-            {sessions.map((session) => {
-              return (
-                <Card
-                  title={session.name}
-                  subtitle={session.moment}
-                  btntext="träningspass"
-                  id={session.id}
-                  level={session.level}
-                  link={"session/" + session.id}
-                />
-              );
-            })}
-          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="column">
+          <aside className="menu">
+            <p className="menu-label">Övningar</p>
+            <ul className="menu-list">
+              {sessions.map((doc) => {
+                return (
+                  <li>
+                    <Link to={"/session/" + doc.id} className="is-link">
+                      {doc.name} - {doc.level}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </aside>
         </div>
       </div>
     </div>

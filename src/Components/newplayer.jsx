@@ -52,26 +52,25 @@ function Newplayer() {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <h1 className="h1">Ny spelare i {team.name}</h1>
+        <div className="column">
+          <h1 className="title">Ny spelare i {team.name}</h1>
           <form>
-            <div className="form-group">
-              <label htmlFor="name">Namn</label>
+            <div className="field">
+              <label htmlFor="name" className="label">Namn</label>
               <input
                 type="text"
                 name="name"
                 id="name"
-                className="form-control"
+                className="control input"
                 placeholder="Spelarens namn"
                 value={player.name}
                 onChange={handleChange}
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="year">Födelseår</label>
+            <div className="field">
+              <label htmlFor="year" className="label">Födelseår</label>
               <input
-                className="form-control"
+                className="control input"
                 type="number"
                 min="1900"
                 max="2100"
@@ -83,12 +82,12 @@ function Newplayer() {
               />
             </div>
 
-            <div className="form-group">
-              <label htmlFor="pos">Position</label>
+            <div className="field">
+              <label htmlFor="pos" className="label">Position</label>
               <select
                 name="pos"
                 id="pos"
-                className="form-control"
+                className="control select is-fullwidth"
                 value={player.pos}
                 onChange={handleChange}
               >
@@ -104,16 +103,18 @@ function Newplayer() {
                 <option value="RF">RF</option>
               </select>
             </div>
-
+            <div className="field">
             <button
               type="button"
-              className="btn btn-primary"
+              className="button is-primary"
               onClick={handleSubmit}
             >
               Spara
             </button>
+
+            </div>
+
           </form>
-        </div>
       </div>
     </div>
   );

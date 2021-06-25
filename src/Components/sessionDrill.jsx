@@ -14,13 +14,9 @@ function SessionDrill(props) {
   }, [props.id]);
 
   return (
-    <div className="row">
-      <div className="col-md-12">
-        <hr />
-      </div>
-      <div className="col-md-6">
-        <h2 className="h2">{drill.name}</h2>
-
+    <div className="columns">
+      <div className="column is-6">
+        <h2 className="subtitle">{drill.name}</h2>
         <table className="table table-striped table-responsive">
           <thead>
             <tr>
@@ -48,8 +44,12 @@ function SessionDrill(props) {
         <h3 className="h3">Anvisningar</h3>
         <p>{drill.rules}</p>
       </div>
-      <div className="col-md-6">
-        <img src={drill.img_url} alt="" className="img-thumbnail" />
+      <div className="column">
+        <img
+          src={drill.img_url}
+          alt=""
+          className="image  is-256x256 is-fullwidth"
+        />
       </div>
     </div>
   );

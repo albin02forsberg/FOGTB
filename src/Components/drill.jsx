@@ -43,21 +43,21 @@ function Drill() {
 
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-lg-6">
-          <h1 className="h1">{drill.name}</h1>
+      <div className="columns is-multiline mx-1">
+        <div className="column is-5 ">
+          <h1 className="title">{drill.name}</h1>
           {display && (
-            <div className="btn-group">
+            <div className="buttons">
               <button
                 type="button"
-                className="btn btn-danger"
+                className="button is-danger"
                 data-toggle="modal"
                 data-target="#exampleModal"
               >
                 Radera
               </button>
               <Link to={"/editdrill/" + drill.id}>
-                <button className="btn btn-primary">Redigera</button>
+                <button className="button is-primary">Redigera</button>
               </Link>
               <Modal title="Hello" />
             </div>
@@ -69,37 +69,35 @@ function Drill() {
               {drill.creator_username}
             </Link>{" "}
           </p>
-          <table className="table table-striped table-responsive">
-            <thead>
-              <tr>
-                <th>Moment</th>
-                <th>Typ</th>
-                <th>Nivå</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{drill.moment}</td>
-                <td>{drill.type}</td>
-                <td>{drill.level}</td>
-              </tr>
-            </tbody>
-          </table>
-          <h2 className="h2">Varför?</h2>
+          <div className="table-container">
+            <table className="table table-striped table-responsive is-fullwidth">
+              <thead>
+                <tr>
+                  <th>Moment</th>
+                  <th>Typ</th>
+                  <th>Nivå</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{drill.moment}</td>
+                  <td>{drill.type}</td>
+                  <td>{drill.level}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h2 className="subtitle">Varför?</h2>
           <p>{drill.explenation}</p>
-          <h2 className="h2">Beskrivning</h2>
+          <h2 className="subtitle">Beskrivning</h2>
           <p>{drill.description}</p>
-          <h2 className="h2">Organisation</h2>
+          <h2 className="subtitle">Organisation</h2>
           <p>{drill.organization}</p>
-          <h2 className="h2">Anvisningar</h2>
+          <h2 className="subtitle">Anvisningar</h2>
           <p>{drill.rules}</p>
         </div>
-        <div className="col-lg-6">
-          <img
-            src={drill.img_url}
-            alt={drill.name}
-            className="img-thumbnail img-fluid"
-          />
+        <div className="column">
+          <img src={drill.img_url} alt={drill.name} className="image" />
         </div>
       </div>
     </div>

@@ -23,6 +23,7 @@ import Team from "./Components/team";
 import Newplayer from "./Components/newplayer";
 import Player from "./Components/player";
 import CreateTrainig from "./Components/createtraining";
+import Footer from "./Components/footer";
 
 function App() {
   return (
@@ -78,6 +79,7 @@ function App() {
           <Dashboard />
         </Route>
       </Switch>
+      <Footer/>
     </Router>
   );
 }

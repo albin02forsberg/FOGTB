@@ -18,7 +18,7 @@ function CreateTraining() {
               Datum
             </label>
             <input
-              type="date-time"
+              type="date"
               name="date"
               id="date"
               className="control input is-fullwidth"

@@ -50,19 +50,21 @@ function Team() {
         </div>
       </div>
       <div className="container">
-        <div className="column">
-          <h2 className="subtitle">Matcher</h2>
+        <div className="columns is-multiline mx-1 my-1">
+          <div className="column is-6">
+            <h2 className="subtitle">Matcher</h2>
 
-          <ul className="list-group"></ul>
+            <ul className="list-group"></ul>
 
-          <button className="button is-primary">Lägg till match</button>
-        </div>
-        <div className="column">
-          <h2 className="subtitle">Träningar</h2>
-          <ul className="list-group"></ul>
-          <Link to={"/createtraining/" + id}>
-            <button className="button is-primary">Lägg till träning</button>
-          </Link>
+            <button className="button is-primary">Lägg till match</button>
+          </div>
+          <div className="column">
+            <h2 className="subtitle">Träningar</h2>
+            <ul className="list-group"></ul>
+            <Link to={"/createtraining/" + id}>
+              <button className="button is-primary">Lägg till träning</button>
+            </Link>
+          </div>
         </div>
         <div className="column">
           <h2 className="subtitle"> Spelare och statistik</h2>

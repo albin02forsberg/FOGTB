@@ -24,6 +24,7 @@ import Newplayer from "./Components/newplayer";
 import Player from "./Components/player";
 import CreateTrainig from "./Components/createtraining";
 import Footer from "./Components/footer";
+import Training from "./Components/training";
 
 function App() {
   return (
@@ -51,14 +52,17 @@ function App() {
         <Route path="/createteam">
           <CreateTeam/>
         </Route>
-        <Route path="/team/:id">
-          <Team/>
+        <Route path="/team/:id/addplayer">
+          <Newplayer/>
         </Route>
-        <Route path="/createtraining/:id">
+        <Route path="/team/:id/createtraining">
           <CreateTrainig/>
         </Route>
-        <Route path="/addplayer/:id">
-          <Newplayer/>
+        <Route path="/team/:teamid/training/:id">
+          <Training/>
+        </Route>
+        <Route path="/team/:id">
+          <Team/>
         </Route>
         <Route path="/player/:id">
           <Player/>

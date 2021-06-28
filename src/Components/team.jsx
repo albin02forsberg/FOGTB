@@ -7,6 +7,7 @@ function Team() {
   const { id } = useParams();
   const [team, setTeam] = useState({});
   const [players, setPlayers] = useState([]);
+  const [trainings, setTrainings] = useState([]);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
 
@@ -25,6 +26,24 @@ function Team() {
       .then((snapshot) => {
         setTeam(snapshot.data());
         setUsers(snapshot.data().users);
+      });
+
+    // db.collection("teams")
+    //   .doc(id)
+    //   .collection("trainings")
+    //   .doc()
+    //   .get()
+    //   .then((snapshot) => {
+    //     setTrainings(snapshot.data());
+    //   });
+    db.collection("teams")
+      .doc(id)
+      .collection("trainings").orderBy("date")
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((training) => {
+          setTrainings((arr) => [...arr, training.data()]);
+        });
       });
 
     db.collection("players")
@@ -60,8 +79,20 @@ function Team() {
           </div>
           <div className="column">
             <h2 className="subtitle">Träningar</h2>
-            <ul className="list-group"></ul>
-            <Link to={"/createtraining/" + id}>
+
+            <ul className="list-group">
+              {trainings.map((doc) => {
+                return (
+                  <Link to={"/team/"+ id + "/training/" + doc.id}>
+                    <li>
+                      Träning - {doc.place} - {doc.date} - {doc.time}
+                    </li>
+                  </Link>
+                );
+              })}
+            </ul>
+
+            <Link to={"/team/" + id + "/createtraining"}>
               <button className="button is-primary">Lägg till träning</button>
             </Link>
           </div>
@@ -106,7 +137,7 @@ function Team() {
               <tfoot>
                 <tr>
                   <td colSpan="7">
-                    <Link className="button is-primary" to={"/addplayer/" + id}>
+                    <Link className="button is-primary" to={ "/team/" + id + "/addplayer" }>
                       Lägg till spelare
                     </Link>
                   </td>

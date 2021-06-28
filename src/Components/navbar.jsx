@@ -1,58 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
-import { auth } from "../firebase/firebase";
+import { auth, db } from "../firebase/firebase";
 import "../static/navbar";
 
 function Navbar() {
   const [user, setUser] = useState(null);
+  const [teams, setTeams] = useState([]);
 
-  auth.onAuthStateChanged((u) => {
-    setUser(u);
+  auth.onAuthStateChanged((user) => {
+    setUser(user);
+    db.collection("users")
+      .where("uid", "==", auth.currentUser.uid)
+      .get()
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          setTeams(doc.data().teams);
+        });
+      });
   });
-  return (
-    // <nav className="navbar navbar-expand-xl navbar-dark bg-dark">
-    //   <div className="container-fluid">
-    //     <Link className="navbar-brand" to="/">
-    //       FOGTB
-    //     </Link>
-    //     <button
-    //       className="navbar-toggler"
-    //       type="button"
-    //       data-bs-toggle="collapse"
-    //       data-bs-target="#navbarTogglerDemo2"
-    //       aria-controls="navbarTogglerDemo2"
-    //       aria-expanded="false"
-    //       aria-label="Toggle navigation"
-    //     >
-    //       <span className="navbar-toggler-icon"></span>
-    //     </button>
-    //     <div className="collapse navbar-collapse show" id="navbarTogglerDemo2">
-    //       <ul className="navbar-nav mr-auto">
-    //         <li className="nav-item">
-    //           <Link className="nav-link" to="/">
-    //             Dashboard
-    //           </Link>
-    //         </li>
-    //         <li className="nav-item">
-    //           <Link className="nav-link" to="/drills">
-    //             Övningar
-    //           </Link>
-    //         </li>
-    //         <li className="nav-item">
-    //           <Link className="nav-link" to="/sessions">
-    //             Träningspass
-    //           </Link>
-    //         </li>
-    //       </ul>
-    //       <ul className="navbar-nav my-2 my-lg-0">
-    //         <LoginBtn user={user} />
-    //       </ul>
-    //     </div>
-    //   </div>
-    // </nav>
 
+  useEffect(() => {}, [user]);
+
+  return (
     <nav className="navbar" role="navigation" area-label="main navigation">
       <div className="navbar-brand">
         <Link to="/" className="navbar-item">
@@ -111,6 +82,24 @@ function Navbar() {
             >
               Träningspass
             </Link>
+          </div>
+          <div className="navbar-item has-dropdown is-hoverable">
+            <p className="navbar-link">Mina lag</p>
+
+            <div className="navbar-dropdown">
+              {teams.map((doc) => {
+                return (
+                  <Link
+                    className="navbar-item"
+                    onClick={() => {
+                      window.location.replace("/team/" + doc.id);
+                    }}
+                  >
+                    {doc.name}
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
         <LoginBtn user={user} />

@@ -6,7 +6,6 @@ import { auth, db } from "../firebase/firebase";
 import { Link } from "react-router-dom";
 
 function Dashboard() {
-  const [user, setUser] = useState({});
   const [id, setId] = useState("");
   const [teams, setTeams] = useState([]);
   const [firstName, setFirstName] = useState("");
@@ -15,7 +14,7 @@ function Dashboard() {
     if (!user) {
       window.location.replace("/login");
     } else {
-      setUser(user);
+      // setUser(user);
       setId(user.uid);
     }
   });
@@ -40,7 +39,7 @@ function Dashboard() {
     <div>
       <div className="hero is-primary">
         <div className="hero-body">
-          <p className="title">Välkommen, {firstName || user.displayName}</p>
+          <p className="title">Välkommen, {firstName}</p>
           <p className="subtitle">Dashboard</p>
         </div>
       </div>
@@ -62,30 +61,29 @@ function Dashboard() {
           </div>
         </div>
         <div className="columns">
-
-        <div className="column is-6 mx-2">
-          <aside className="menu">
-            <p className="menu-label">Mina lag</p>
-            <ul className="menu-list menu-list-border-left">
-              {teams.map((team) => {
-                return (
-                  <li>
-                    <Link to={"/team/" + team.id}>{team.name}</Link>
-                  </li>
-                );
-              })}
-              <li>
-                <Link className="is-active" to={"/createteam"}>
-                  Skapa lag
-                </Link>
-              </li>
-              {/* <Teams teams={teams} /> */}
-            </ul>
-          </aside>
-        </div>
-        <div className="column is-6">
-          <h2 className="h2">Kommande aktiviteter</h2>
-        </div>
+          <div className="column is-6 mx-2">
+            <aside className="menu">
+              <p className="menu-label">Mina lag</p>
+              <ul className="menu-list menu-list-border-left">
+                {teams.map((team) => {
+                  return (
+                    <li>
+                      <Link to={"/team/" + team.id}>{team.name}</Link>
+                    </li>
+                  );
+                })}
+                <li>
+                  <Link className="is-active" to={"/createteam"}>
+                    Skapa lag
+                  </Link>
+                </li>
+                {/* <Teams teams={teams} /> */}
+              </ul>
+            </aside>
+          </div>
+          <div className="column is-6">
+            <h2 className="h2">Kommande aktiviteter</h2>
+          </div>
         </div>
       </div>
     </div>

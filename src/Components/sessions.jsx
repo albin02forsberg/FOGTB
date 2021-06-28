@@ -27,8 +27,11 @@ function Sessions() {
       </div>
       <div className="container">
         <div className="column">
+          <h2 className="subtitle">Innehåll</h2>
+        </div>
+        <div className="column">
           <aside className="menu">
-            <p className="menu-label">Övningar</p>
+            <p className="menu-label">Träningspass</p>
             <ul className="menu-list">
               {sessions.map((doc) => {
                 return (

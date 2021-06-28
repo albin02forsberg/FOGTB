@@ -44,7 +44,7 @@ function Drill() {
   return (
     <div className="container">
       <div className="columns is-multiline mx-1">
-        <div className="column is-5 ">
+        <div className="column is-6 ">
           <h1 className="title">{drill.name}</h1>
           {display && (
             <div className="buttons">

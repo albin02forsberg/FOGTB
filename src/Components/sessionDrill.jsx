@@ -16,7 +16,7 @@ function SessionDrill(props) {
   return (
     <div className="columns">
       <div className="column is-6">
-        <h2 className="subtitle">{drill.name}</h2>
+        <h2 className="title">{drill.name}</h2>
         <table className="table table-striped table-responsive">
           <thead>
             <tr>
@@ -33,15 +33,15 @@ function SessionDrill(props) {
             </tr>
           </tbody>
         </table>
-        <h3 className="h3">Varför?</h3>
+        <h3 className="subtitle">Varför?</h3>
         <p>{drill.explenation}</p>
-        <h3 className="h3">Beskrivning</h3>
+        <h3 className="subtitle">Beskrivning</h3>
         <p>{drill.explenation}</p>
-        <h3 className="h3">Förklaring</h3>
+        <h3 className="subtitle">Förklaring</h3>
         <p>{drill.description}</p>
-        <h3 className="h3">Organisation</h3>
+        <h3 className="subtitle">Organisation</h3>
         <p>{drill.organization}</p>
-        <h3 className="h3">Anvisningar</h3>
+        <h3 className="subtitle">Anvisningar</h3>
         <p>{drill.rules}</p>
       </div>
       <div className="column">

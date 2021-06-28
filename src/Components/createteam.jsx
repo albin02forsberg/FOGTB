@@ -7,6 +7,8 @@ function CreateTeam() {
     users: [],
     id: "",
     players: [],
+    trainings: [],
+    games: []
   });
   const [uid, setUid] = useState();
   const [user, setUser] = useState({});

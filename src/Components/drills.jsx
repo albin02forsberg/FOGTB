@@ -11,6 +11,7 @@ function Drills() {
   useEffect(() => {
     db.collection("drills")
       .orderBy("clicks", "desc")
+      .orderBy("name", "asc")
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
@@ -35,7 +36,7 @@ function Drills() {
       </div>
       <div className="container">
         <div className="column">
-          <aside className="menu">
+          {/* <aside className="menu">
             <p className="menu-label">Övningar</p>
             <ul className="menu-list">
               {drills.map((doc) => {
@@ -48,7 +49,35 @@ function Drills() {
                 );
               })}
             </ul>
-          </aside>
+          </aside> */}
+          <div className="table-container">
+            <table className="table is-striped is-hoverable is-fullwidth">
+              <thead>
+                <th>Namn</th>
+                <td>Nivå</td>
+                <td>Typ</td>
+                <td>Moment</td>
+              </thead>
+              <tbody>
+                {drills.map((doc) => {
+                  return (
+                    <tr
+                      onClick={() => {
+                        window.location.replace("/drill/" + doc.id);
+                      }}
+                    >
+                      <td>
+                        <Link to={"/drill/" + doc.id}>{doc.name}</Link>
+                      </td>
+                      <td>{doc.level}</td>
+                      <td>{doc.type}</td>
+                      <td>{doc.moment}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

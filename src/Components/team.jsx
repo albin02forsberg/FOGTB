@@ -38,7 +38,8 @@ function Team() {
     //   });
     db.collection("teams")
       .doc(id)
-      .collection("trainings").orderBy("date")
+      .collection("trainings")
+      .orderBy("date")
       .get()
       .then((snapshot) => {
         snapshot.docs.forEach((training) => {
@@ -83,7 +84,13 @@ function Team() {
             <ul className="list-group">
               {trainings.map((doc) => {
                 return (
-                  <Link to={"/team/"+ id + "/training/" + doc.id}>
+                  <Link
+                    onClick={() => {
+                      window.location.replace(
+                        "/team/" + id + "/training/" + doc.id
+                      );
+                    }}
+                  >
                     <li>
                       Träning - {doc.place} - {doc.date} - {doc.time}
                     </li>
@@ -120,7 +127,13 @@ function Team() {
                   return (
                     <tr>
                       <td>
-                        <Link to={"/player/" + doc.id}>{doc.name}</Link>
+                        <Link
+                          onClick={() => {
+                            window.location.replace("/player/" + doc.id);
+                          }}
+                        >
+                          {doc.name}
+                        </Link>
                       </td>
                       <td>{doc.year}</td>
                       <td>{doc.games.Lenght}</td>
@@ -137,7 +150,10 @@ function Team() {
               <tfoot>
                 <tr>
                   <td colSpan="7">
-                    <Link className="button is-primary" to={ "/team/" + id + "/addplayer" }>
+                    <Link
+                      className="button is-primary"
+                      to={"/team/" + id + "/addplayer"}
+                    >
                       Lägg till spelare
                     </Link>
                   </td>

@@ -119,7 +119,12 @@ function Training() {
             <button className="button is-primary" onClick={handleSubmit}>
               Spara
             </button>
-            <Link to={"/team/" + teamid}>
+            <Link
+              to={"/team/" + teamid}
+              onClick={() => {
+                window.location.replace("/team/" + teamid);
+              }}
+            >
               <button className="button is-secondary">Tillbaka</button>
             </Link>
           </div>

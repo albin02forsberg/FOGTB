@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import "./static/App.min.css";
 // import "./static/foundation.css";
-import "bulma/css/bulma.min.css"
+import "bulma/css/bulma.min.css";
 
 // Import components
 import Dashboard from "./Components/dashboard";
@@ -25,11 +25,13 @@ import Player from "./Components/player";
 import CreateTrainig from "./Components/createtraining";
 import Footer from "./Components/footer";
 import Training from "./Components/training";
+// import Newnaw from "./Components/newNav";
 
 function App() {
   return (
     <Router>
       <Navbar />
+      {/* <Newnaw /> */}
       <Switch>
         <Route path="/login">
           <Login />
@@ -50,25 +52,25 @@ function App() {
           <DrillCreator />
         </Route>
         <Route path="/createteam">
-          <CreateTeam/>
+          <CreateTeam />
         </Route>
         <Route path="/team/:id/addplayer">
-          <Newplayer/>
+          <Newplayer />
         </Route>
         <Route path="/team/:id/createtraining">
-          <CreateTrainig/>
+          <CreateTrainig />
         </Route>
         <Route path="/team/:teamid/training/:id">
-          <Training/>
+          <Training />
         </Route>
         <Route path="/team/:id">
-          <Team/>
+          <Team />
         </Route>
         <Route path="/player/:id">
-          <Player/>
+          <Player />
         </Route>
         <Route path="/editdrill/:id">
-          <Editdrill/>
+          <Editdrill />
         </Route>
         <Route path="/drill/:id">
           <Drill />
@@ -83,7 +85,7 @@ function App() {
           <Dashboard />
         </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </Router>
   );
 }

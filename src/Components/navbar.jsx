@@ -49,11 +49,11 @@ function Navbar() {
         <div className="navbar-start">
           <div className="navbar-item">
             <Link
-              to="/"
               onClick={() => {
                 document
                   .querySelector("#navbarBasicExample")
                   .classList.toggle("is-active");
+                window.location.replace("/");
               }}
             >
               Dashboard
@@ -61,11 +61,11 @@ function Navbar() {
           </div>
           <div className="navbar-item">
             <Link
-              to="/drills"
               onClick={() => {
                 document
                   .querySelector("#navbarBasicExample")
                   .classList.toggle("is-active");
+                window.location.replace("/drills");
               }}
             >
               Övningar
@@ -73,11 +73,11 @@ function Navbar() {
           </div>
           <div className="navbar-item">
             <Link
-              to="/sessions"
               onClick={() => {
                 document
                   .querySelector("#navbarBasicExample")
                   .classList.toggle("is-active");
+                window.location.replace("/sessions");
               }}
             >
               Träningspass
@@ -115,11 +115,11 @@ function LoginBtn(props) {
         <div className="buttons">
           <Link
             className="button is-primary"
-            to={"/user/" + auth.currentUser.uid}
             onClick={() => {
               document
                 .querySelector("#navbarBasicExample")
                 .classList.toggle("is-active");
+              window.location.replace("/user/" + auth.currentUser.uid);
             }}
           >
             {auth.currentUser.displayName}
@@ -128,10 +128,10 @@ function LoginBtn(props) {
             className="button is-danger"
             onClick={() => {
               auth.signOut();
-              sessionStorage.setItem("user", null);
               document
                 .querySelector("#navbarBasicExample")
                 .classList.toggle("is-active");
+              window.location.replace("/login");
             }}
           >
             Logga ut
@@ -171,4 +171,4 @@ function LoginBtn(props) {
   }
 }
 
-export default Navbar;
+export default React.memo(Navbar);

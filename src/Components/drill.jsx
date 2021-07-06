@@ -43,32 +43,34 @@ function Drill() {
 
   return (
     <div className="container">
-      <div className="columns is-multiline mx-1">
-        <div className="column is-6 ">
-          <h1 className="title">{drill.name}</h1>
-          {display && (
-            <div className="buttons">
-              <button
-                type="button"
-                className="button is-danger"
-                data-toggle="modal"
-                data-target="#exampleModal"
-              >
-                Radera
-              </button>
-              <Link to={"/editdrill/" + drill.id}>
-                <button className="button is-primary">Redigera</button>
-              </Link>
-              <Modal title="Hello" />
-            </div>
-          )}
-          <hr />
-          <p>
-            Skapad av:{" "}
-            <Link to={"/user/" + drill.creator_uid}>
-              {drill.creator_username}
-            </Link>{" "}
-          </p>
+      <div className="row">
+        <h1 className="title">{drill.name}</h1>
+        {display && (
+          <div className="buttons">
+            <button
+              type="button"
+              className="button is-danger"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              Radera
+            </button>
+            <Link to={"/editdrill/" + drill.id}>
+              <button className="button is-primary">Redigera</button>
+            </Link>
+          </div>
+        )}
+        <hr />
+        <p>
+          Skapad av:{" "}
+          <Link to={"/user/" + drill.creator_uid}>
+            {drill.creator_username}
+          </Link>
+          <br />
+        </p>
+      </div>
+      <div className="double-col">
+        <div className="column">
           <div className="table-container">
             <table className="table table-striped table-responsive is-fullwidth">
               <thead>
@@ -96,7 +98,7 @@ function Drill() {
           <h2 className="subtitle">Anvisningar</h2>
           <p>{drill.rules}</p>
         </div>
-        <div className="column">
+        <div className="row">
           <img src={drill.img_url} alt={drill.name} className="image" />
         </div>
       </div>

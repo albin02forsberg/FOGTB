@@ -25,16 +25,9 @@ function Drills() {
   }, []);
 
   return (
-    <div className="test">
-      <div className="hero is-primary">
-        <div className="hero-body is-center">
-          <h1 className="title">Övningar</h1>
-          <Link to="/drillcreator">
-            <button className="button is-secondary">Skapa övningar</button>
-          </Link>
-        </div>
-      </div>
       <div className="container">
+        <p className="title">Övningar</p>
+        <hr />
         <div className="column">
           {/* <aside className="menu">
             <p className="menu-label">Övningar</p>
@@ -54,9 +47,9 @@ function Drills() {
             <table className="table is-striped is-hoverable is-fullwidth">
               <thead>
                 <th>Namn</th>
-                <td>Nivå</td>
-                <td>Typ</td>
-                <td>Moment</td>
+                <th>Nivå</th>
+                <th>Typ</th>
+                <th>Moment</th>
               </thead>
               <tbody>
                 {drills.map((doc) => {
@@ -79,7 +72,6 @@ function Drills() {
             </table>
           </div>
         </div>
-      </div>
     </div>
   );
 }

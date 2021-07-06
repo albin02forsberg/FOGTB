@@ -121,7 +121,7 @@ function Newplayer() {
                 Spara
               </button>
               <Link to={"/team/" + id}>
-                <button type="button" className="button is-secondary">Tillbaka</button>
+                <button type="button" className="button-secondary">Tillbaka</button>
               </Link>
             </div>
           </div>

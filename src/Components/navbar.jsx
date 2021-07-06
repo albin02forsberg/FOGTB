@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { auth, db } from "../firebase/firebase";
-import "../static/navbar";
 
 function Navbar() {
   const [user, setUser] = useState(null);
@@ -26,9 +25,7 @@ function Navbar() {
   return (
     <nav className="navbar" role="navigation" area-label="main navigation">
       <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
-          FOGTB
-        </Link>
+        <p className="header">MIFTB</p>
         <button
           class="navbar-burger"
           aria-label="menu"
@@ -47,7 +44,18 @@ function Navbar() {
       </div>
       <div className="navbar-menu" id="navbarBasicExample">
         <div className="navbar-start">
-          <div className="navbar-item">
+          <ul>
+            <a href="/">
+              <li>Dashboard</li>
+            </a>
+            <a href="/drills">
+              <li>Övningar</li>
+            </a>
+            <a href="/sessions">
+              <li>Träningspass</li>
+            </a>
+          </ul>
+          {/* <div className="navbar-item">
             <Link
               onClick={() => {
                 document
@@ -100,7 +108,7 @@ function Navbar() {
                 );
               })}
             </div>
-          </div>
+          </div> */}
         </div>
         <LoginBtn user={user} />
       </div>
@@ -112,7 +120,11 @@ function LoginBtn(props) {
   if (props.user != null) {
     return (
       <div className="navbar-end">
-        <div className="buttons">
+        <ul>
+          <li>{auth.currentUser.displayName}</li>
+          <li>Logga ut</li>
+        </ul>
+        {/* <div className="buttons">
           <Link
             className="button is-primary"
             onClick={() => {
@@ -136,7 +148,7 @@ function LoginBtn(props) {
           >
             Logga ut
           </Link>
-        </div>
+        </div> */}
       </div>
     );
   } else {

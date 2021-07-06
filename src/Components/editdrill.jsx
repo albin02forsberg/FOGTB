@@ -219,7 +219,7 @@ function Editdrill() {
           </div>
           <button
             type="button"
-            className="button is-success control"
+            className="button-success control"
             onClick={handelSumbit}
           >
             Uppdatera

@@ -1,0 +1,72 @@
+*
+    margin: 0
+    padding: 0
+
+body
+    display: flex
+    flex-wrap: wrap
+
+
+.header
+    font-size: 25pt
+
+.title
+    font-size: 20pt
+    margin: 20px
+
+.subtitle
+    font-size: 16pt
+    margin-top: 20px
+
+hr
+    margin: 10px
+    color: $accent
+
+.strapper
+    display: flex
+
+.container
+    padding: 0 3% 0 3%
+    width: 85vw
+    height: 100vh
+    background-color: $background
+    display: flex
+    flex-direction: column
+    overflow: auto
+
+img
+    position: relative
+    max-width: 50vw
+    max-height: 80vh
+
+.row
+    display: flex
+    flex-direction: column
+
+.column
+    display: flex
+    flex-direction: column
+
+.double-col
+    display: flex
+    flex-direction: row
+
+    .column
+        width: 43.5vw
+
+table
+    width: 100%
+    border-collapse: collapse
+
+    th
+        background-color: $accent
+
+    th, td
+        text-align: left
+        padding: 10px
+
+    tr
+        background-color: $secondary-color
+
+    tr:nth-child(odd)
+        background-color: $primary-color

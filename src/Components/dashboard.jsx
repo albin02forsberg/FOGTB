@@ -36,14 +36,9 @@ function Dashboard() {
   }, [id]);
 
   return (
-    <div>
-      <div className="hero is-primary">
-        <div className="hero-body">
-          <p className="title">Välkommen, {firstName}</p>
-          <p className="subtitle">Dashboard</p>
-        </div>
-      </div>
       <div className="container">
+        <div className="title">Välkommen, {firstName}</div>
+        <hr />
         <div className="column">
           <div className="tile is-parent">
             <Card
@@ -86,7 +81,6 @@ function Dashboard() {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 

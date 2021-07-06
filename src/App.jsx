@@ -3,7 +3,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import "./static/App.min.css";
 // import "./static/foundation.css";
-import "bulma/css/bulma.min.css";
+// import "bulma/css/bulma.min.css";
+
+import "./static/main.css";
 
 // Import components
 import Dashboard from "./Components/dashboard";
@@ -29,64 +31,66 @@ import Training from "./Components/training";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      {/* <Newnaw /> */}
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/signup">
-          <SignUp />
-        </Route>
-        <Route path="/drills">
-          <Drills />
-        </Route>
-        <Route path="/sessions">
-          <Sessions />
-        </Route>
-        <Route path="/createsession">
-          <Createsession />
-        </Route>
-        <Route path="/drillcreator">
-          <DrillCreator />
-        </Route>
-        <Route path="/createteam">
-          <CreateTeam />
-        </Route>
-        <Route path="/team/:id/addplayer">
-          <Newplayer />
-        </Route>
-        <Route path="/team/:id/createtraining">
-          <CreateTrainig />
-        </Route>
-        <Route path="/team/:teamid/training/:id">
-          <Training />
-        </Route>
-        <Route path="/team/:id">
-          <Team />
-        </Route>
-        <Route path="/player/:id">
-          <Player />
-        </Route>
-        <Route path="/editdrill/:id">
-          <Editdrill />
-        </Route>
-        <Route path="/drill/:id">
-          <Drill />
-        </Route>
-        <Route path="/session/:id">
-          <Session />
-        </Route>
-        <Route path="/user/:id">
-          <User />
-        </Route>
-        <Route path="/">
-          <Dashboard />
-        </Route>
-      </Switch>
-      <Footer />
-    </Router>
+    <div className="strapper">
+      <Router>
+        <Navbar />
+        {/* <Newnaw /> */}
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/drills">
+            <Drills />
+          </Route>
+          <Route path="/sessions">
+            <Sessions />
+          </Route>
+          <Route path="/createsession">
+            <Createsession />
+          </Route>
+          <Route path="/drillcreator">
+            <DrillCreator />
+          </Route>
+          <Route path="/createteam">
+            <CreateTeam />
+          </Route>
+          <Route path="/team/:id/addplayer">
+            <Newplayer />
+          </Route>
+          <Route path="/team/:id/createtraining">
+            <CreateTrainig />
+          </Route>
+          <Route path="/team/:teamid/training/:id">
+            <Training />
+          </Route>
+          <Route path="/team/:id">
+            <Team />
+          </Route>
+          <Route path="/player/:id">
+            <Player />
+          </Route>
+          <Route path="/editdrill/:id">
+            <Editdrill />
+          </Route>
+          <Route path="/drill/:id">
+            <Drill />
+          </Route>
+          <Route path="/session/:id">
+            <Session />
+          </Route>
+          <Route path="/user/:id">
+            <User />
+          </Route>
+          <Route path="/">
+            <Dashboard />
+          </Route>
+        </Switch>
+        {/* <Footer /> */}
+      </Router>
+    </div>
   );
 }
 

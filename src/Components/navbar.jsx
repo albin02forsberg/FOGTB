@@ -26,34 +26,22 @@ function Navbar() {
     <nav className="navbar" role="navigation" area-label="main navigation">
       <div className="navbar-brand">
         <p className="header">MIFTB</p>
-        <button
-          class="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-          onClick={() => {
-            document
-              .querySelector("#navbarBasicExample")
-              .classList.toggle("is-active");
-          }}
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
       </div>
       <div className="navbar-menu" id="navbarBasicExample">
         <div className="navbar-start">
           <ul>
-            <a href="/">
+            <Link to="/">
               <li>Dashboard</li>
-            </a>
-            <a href="/drills">
+            </Link>
+            <Link to="/drills">
               <li>Övningar</li>
-            </a>
-            <a href="/sessions">
+            </Link>
+            <Link to="/sessions">
               <li>Träningspass</li>
-            </a>
+            </Link>
+            <Link to="/news">
+              <li>Nyheter</li>
+            </Link>
           </ul>
           {/* <div className="navbar-item">
             <Link

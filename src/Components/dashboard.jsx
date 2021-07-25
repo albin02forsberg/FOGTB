@@ -20,6 +20,7 @@ function Dashboard() {
   });
 
   useEffect(() => {
+    console.log(id);
     db.collection("users")
       .where("uid", "==", id)
       .get()

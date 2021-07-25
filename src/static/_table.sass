@@ -1,0 +1,30 @@
+table
+    width: 100%
+    border-collapse: collapse
+
+    max-height: 100vh
+
+    overflow: auto
+
+    th
+        background-color: $accent
+
+    th, td
+        text-align: left
+        padding: 10px
+
+    tr
+        background-color: $secondary-color
+
+    tr:nth-child(odd)
+        background-color: $primary-color
+
+    tr:hover
+        background-color: rgba($accent, 0.5)
+
+
+@media (max-width: 768px) 
+   table
+       display: none 
+
+    

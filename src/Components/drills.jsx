@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 
 function Drills() {
   const [drills, setDrills] = useState([]);
+  const[displayDrills, setDisplayDrills] = useState([]);
+  const [sort, setSort]= useState("name");
+
   // const [counter, setCounter] = useState(0);
 
   useEffect(() => {
@@ -17,6 +20,7 @@ function Drills() {
         snapshot.docs.forEach((doc) => {
           // drills.push(doc.data());
           setDrills((arr) => [...arr, doc.data()]);
+          setDisplayDrills((arr)=> [...arr, doc.data()]);
         });
       })
       .catch((err) => {
@@ -24,9 +28,45 @@ function Drills() {
       });
   }, []);
 
+  useEffect(() => {
+      setDisplayDrills([]);
+
+      drills.reduce((reducer, current)=>{
+
+        if(current.level == sort){
+          console.log(current)
+          setDisplayDrills(arr => [...arr, current]);
+        }
+      }, [])
+  }, [sort])
+
   return (
       <div className="container">
         <p className="title">Övningar</p>
+        <hr />
+        <button className="button-primary" onClick={()=>{
+          window.location.replace("/drillcreator")
+        }}>
+          Skapa övning
+        </button>
+        <button onClick={()=>{
+          setSort("5 mot 5");
+        }}>
+          Test
+        </button>
+        <from className="form-inline">
+          <div className="form-group">
+            <label htmlFor="level" className="label">Nivå</label>
+            <select name="level" id="level" className="form-control" onChange={(e)=>{
+              setSort(e.target.value)
+            }}>
+              <option value="11 mot 11">11 mot 11</option>
+              <option value="11 mot 11">9 mot 9</option>
+              <option value="11 mot 11">7 mot 7</option>
+              <option value="11 mot 11">5 mot 5</option>
+            </select>
+          </div>
+        </from>
         <hr />
         <div className="column">
           {/* <aside className="menu">
@@ -52,7 +92,7 @@ function Drills() {
                 <th>Moment</th>
               </thead>
               <tbody>
-                {drills.map((doc) => {
+                {displayDrills.map((doc) => {
                   return (
                     <tr
                       onClick={() => {

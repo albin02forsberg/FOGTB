@@ -60,109 +60,105 @@ function Team() {
   }, [id]);
 
   return (
-    <div className="div">
-      <div className="hero is-primary">
-        <div className="hero-body">
-          <p className="title">{team.name}</p>
-          {users.includes(user.uid) && (
-            <button className="button is-secondary">Redigera lag</button>
-          )}
-        </div>
+    // {users.includes(user.uid) && (
+    //   <button className="button is-secondary">Redigera lag</button>
+    // )}
+    <div className="container">
+      <div className="div">
+        <p className="title">{team.name}</p>
+        <hr />
       </div>
-      <div className="container">
-        <div className="columns is-multiline mx-1 my-1">
-          <div className="column is-6">
-            <h2 className="subtitle">Matcher</h2>
+      <div className="double-col is-multiline mx-1 my-1">
+        <div className="column is-6">
+          <h2 className="subtitle">Matcher</h2>
 
-            <ul className="list-group"></ul>
-
+          <ul className="list-group"></ul>
+          <a href={"/team/" + id + "/creategame"}>
             <button className="button is-primary">Lägg till match</button>
-          </div>
-          <div className="column">
-            <h2 className="subtitle">Träningar</h2>
-
-            <ul className="list-group">
-              {trainings.map((doc) => {
-                return (
-                  <Link
-                    onClick={() => {
-                      window.location.replace(
-                        "/team/" + id + "/training/" + doc.id
-                      );
-                    }}
-                  >
-                    <li>
-                      Träning - {doc.place} - {doc.date} - {doc.time}
-                    </li>
-                  </Link>
-                );
-              })}
-            </ul>
-
-            <Link to={"/team/" + id + "/createtraining"}>
-              <button className="button is-primary">Lägg till träning</button>
-            </Link>
-          </div>
+          </a>
         </div>
         <div className="column">
-          <h2 className="subtitle"> Spelare och statistik</h2>
-          <div className="table-container">
-            <table className="table is-fullwidth is-striped is-hoverable">
-              <thead>
-                <tr>
-                  <td>Namn</td>
-                  <td>Ålder</td>
-                  <td>Matcher</td>
-                  <td>Träningar</td>
-                  <td>Mål</td>
-                  <td>Assist</td>
-                  <td>Gula kort</td>
-                  <td>Röda kort</td>
-                  <td>Position</td>
-                </tr>
-              </thead>
+          <h2 className="subtitle">Träningar</h2>
 
-              <tbody>
-                {players.map((doc) => {
-                  return (
-                    <tr>
-                      <td>
-                        <Link
-                          onClick={() => {
-                            window.location.replace("/player/" + doc.id);
-                          }}
-                        >
-                          {doc.name}
-                        </Link>
-                      </td>
-                      <td>{doc.year}</td>
-                      <td>{doc.games.Lenght}</td>
-                      <td>{doc.trainings.Length}</td>
-                      <td>{doc.goals}</td>
-                      <td>{doc.assist}</td>
-                      <td>{doc.yellow}</td>
-                      <td>{doc.red}</td>
-                      <td>{doc.pos}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td colSpan="7">
-                    <Link
-                      className="button is-primary"
-                      to={"/team/" + id + "/addplayer"}
-                    >
-                      Lägg till spelare
-                    </Link>
-                  </td>
-                  <td>Antal spelare:</td>
-                  <td>{players.length}</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
+          <ul className="list-group">
+            {trainings.map((doc) => {
+              return (
+                <Link
+                  onClick={() => {
+                    window.location.replace(
+                      "/team/" + id + "/training/" + doc.id
+                    );
+                  }}
+                >
+                  <li>
+                    Träning - {doc.place} - {doc.date} - {doc.time}
+                  </li>
+                </Link>
+              );
+            })}
+          </ul>
+
+          <a href={"/team/" + id + "/createtraining"}>
+            <button className="button is-primary">Lägg till träning</button>
+          </a>
+        </div>
+      </div>
+      <div className="column">
+        <h2 className="subtitle"> Spelare och statistik</h2>
+        <div className="table-container">
+          <table className="table is-fullwidth is-striped is-hoverable">
+            <thead>
+              <th>Namn</th>
+              <th>Ålder</th>
+              <th>Matcher</th>
+              <th>Träningar</th>
+              <th>Mål</th>
+              <th>Assist</th>
+              <th>Gula kort</th>
+              <th>Röda kort</th>
+              <th>Position</th>
+            </thead>
+
+            <tbody>
+              {players.map((doc) => {
+                return (
+                  <tr>
+                    <td>
+                      <Link
+                        onClick={() => {
+                          window.location.replace("/player/" + doc.id);
+                        }}
+                      >
+                        {doc.name}
+                      </Link>
+                    </td>
+                    <td>{doc.year}</td>
+                    <td>{doc.games.Lenght}</td>
+                    <td>{doc.trainings.Length}</td>
+                    <td>{doc.goals}</td>
+                    <td>{doc.assist}</td>
+                    <td>{doc.yellow}</td>
+                    <td>{doc.red}</td>
+                    <td>{doc.pos}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colSpan="7">
+                  <Link
+                    className="button is-primary"
+                    to={"/team/" + id + "/addplayer"}
+                  >
+                    Lägg till spelare
+                  </Link>
+                </td>
+                <td>Antal spelare:</td>
+                <td>{players.length}</td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  background-color: #dae3e5;
 }
 
 .header {
@@ -17,7 +18,7 @@ body {
 
 .title {
   font-size: 20pt;
-  margin: 20px;
+  padding: 15px;
 }
 
 .subtitle {
@@ -91,30 +92,9 @@ img {
   width: 43.5vw;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-table th {
-  background-color: #507dbc;
-}
-
-table th, table td {
-  text-align: left;
-  padding: 10px;
-}
-
-table tr {
-  background-color: #bbd1ea;
-}
-
-table tr:nth-child(odd) {
-  background-color: #a1c6ea;
-}
-
-button {
-  height: 50px;
+a {
+  color: black;
+  text-decoration: none;
 }
 
 .navbar {
@@ -128,6 +108,9 @@ button {
   background-color: #a1c6ea;
   height: 100vh;
   width: 15vw;
+  border-radius: 0px 10px 10px 0px;
+  -webkit-animation: test 0.5s ease-in-out;
+          animation: test 0.5s ease-in-out;
 }
 
 .navbar .header {
@@ -142,6 +125,8 @@ button {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .navbar .navbar-menu .navbar-start {
@@ -180,6 +165,50 @@ button {
   background-color: #a1c6ea;
 }
 
+@-webkit-keyframes test {
+  0% {
+    width: 0vh;
+  }
+  100% {
+    width: 15vh;
+  }
+}
+
+@keyframes test {
+  0% {
+    width: 0vh;
+  }
+  100% {
+    width: 15vh;
+  }
+}
+
+@-webkit-keyframes test2 {
+  0% {
+    width: 15vh;
+  }
+  100% {
+    width: 0vh;
+  }
+}
+
+@keyframes test2 {
+  0% {
+    width: 15vh;
+  }
+  100% {
+    width: 0vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    -webkit-animation: test2 0.5s ease-in-out;
+            animation: test2 0.5s ease-in-out;
+    display: none;
+  }
+}
+
 form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -212,15 +241,57 @@ form .field label {
   padding: 10px;
 }
 
+form .field select {
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  max-height: 100vh;
+  overflow: auto;
+}
+
+table th {
+  background-color: #507dbc;
+}
+
+table th, table td {
+  text-align: left;
+  padding: 10px;
+}
+
+table tr {
+  background-color: #bbd1ea;
+}
+
+table tr:nth-child(odd) {
+  background-color: #a1c6ea;
+}
+
+table tr:hover {
+  background-color: rgba(80, 125, 188, 0.5);
+}
+
+@media (max-width: 768px) {
+  table {
+    display: none;
+  }
+}
+
 button {
   height: 50px;
 }
 
-button-primary {
+.button-primary {
   background-color: #a1c6ea;
 }
 
 .button-secondary {
   background-color: #bbd1ea;
+}
+
+.button-success {
+  background-color: green;
 }
 /*# sourceMappingURL=main.css.map */
